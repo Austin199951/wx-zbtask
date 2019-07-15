@@ -1,0 +1,5 @@
+page{background:#efefef;}
+.editinfo text{color:#606060;}
+.close{width:25rpx;height:25rpx;}
+.info_inp{padding:5rpx 20rpx;border:1px solid #efefef;width:80%;height:70rpx;line-height: 70rpx;}
+.editinfo>view{width:70%;}

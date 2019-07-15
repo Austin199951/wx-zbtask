@@ -1,0 +1,23 @@
+<view class='container margin_top_pub'>
+  <view class='flex_center'>
+    <view class="tab_btn text_center tab_btn_cur">请输入平台已有手机账号进行绑定</view>
+  </view>
+
+  <!-- 账号密码登录 -->
+  <view class='quick_register'>
+    <view class='pub_list flex_center padding_l_r'>
+      <view class='flex_start w100'>
+        <image src='../../images/note.png' mode='aspectFit' class='icon' ></image>  
+        <input placeholder='请输入手机号' type='number' style='width:90%;' bindinput='mobile' value='{{mobile}}'></input>   
+        </view>
+    </view>
+    <view class='pub_list flex_space_bet padding_l_r'>
+      <view class='flex_start'>
+        <image src='../../images/password.png' class='pw_icon' mode='aspectFit'></image> 
+        <input placeholder='请输入登录密码' style='width:90%;' type='password' bindinput='password' value='{{pw}}'></input>
+      </view>
+    </view>
+  </view>
+  <navigator hover-class='none' class='margin_top' url='register'>没有众帮账号， <text class='color_blue'>马上注册</text></navigator>
+  <view class='btn_square1 w100 yellow text_center login_btn' bindtap='confirm'>绑定手机号</view> 
+</view>

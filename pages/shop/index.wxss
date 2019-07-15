@@ -1,0 +1,4 @@
+page{background:#efefef;}
+.point_list navigator{height:420rpx; width:48%;}
+.point_list .point_img{height:300rpx;}
+.at_sale{background:#f03925;width:80rpx;height:50rpx;line-height:50rpx;border-radius:5rpx;top:0rpx;left:0rpx;}

@@ -1,0 +1,7 @@
+.integral{height:160rpx;line-height:160rpx;}
+.integral image{height:160rpx;}
+.index_classify navigator,.index_classify view{width:30%;}
+.integral_strategy{line-height:60rpx;}
+.species{width:30rpx;height:30rpx;margin:0 8rpx 0 15rpx;}
+.get_point{border-radius: 40rpx;width:200rpx;height:20rpx;background:#e0e0e0;}
+.point_percent{background: #ff972b;z-index: 2;}

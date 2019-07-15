@@ -1,0 +1,47 @@
+<view class='w95 list flex_space_bet refundtask'>
+  <text class='refund_tit'>任务名称</text>
+  <input disabled='disabled' class='border_radius1 text_right' value='{{task_info.task_name}}'></input>
+</view>
+
+<view class='w95 list flex_space_bet refundtask'>
+  <text class='refund_tit'>人数统计</text>
+  <input disabled='disabled' class='border_radius1 text_right' wx:if="{{task_info.history_injoin_man > 0}}" value='激活前有{{task_info.history_injoin_man}}人接单，现阶段'></input>
+
+<input disabled='disabled' class='border_radius1 text_right' wx:else value='已有{{task_info.current_injoin_man}}人接单，最大可允许{{task_info.current_maxjoin_man}}次数'></input>
+</view>
+
+<view class='w95 list flex_space_bet refundtask' style='align-items:flex_start;'>
+  <text class='refund_tit'>订单统计</text>
+  <view class='flex_column' style='min-width:80%;'>
+    <block wx:for="{{order_status}}" wx:key="key">
+      <input disabled='disabled' class='border_radius1 text_right' value='状态为{{item.status_cn}}的有{{item.cnt}}人'></input>
+    </block>
+  </view>
+</view>
+
+<view class='w95 list flex_space_bet refundtask'>
+  <text class='refund_tit'>金额统计</text>
+  <input disabled='disabled' class='border_radius1 text_right' value='已支付{{task_info.total_money}}元，可退{{task_info.refund_money}}元'></input>
+</view>
+
+
+<view class='w95 list refundtask'>
+  <text class='refund_tit'>支付信息</text>
+  <text class='w100' class='margin_top pay_info'>微信支付订单号：{{pay_info.transaction_id}} \n 支付日期：{{pay_info.add_time}}</text>
+</view>
+
+<view wx:if="{{task_info.task_can_refund == 1}}">
+  <view class='w50 text_center btn_circle yellow' wx:if="{{pay_info.transaction_id != ''}}" style='margin-top:50rpx;' bindtap='confirm'>确认</view>
+
+  <text class='w95 list' wx:else>没有找到微信订单号，为后台加单，无法发起退款操作</text>
+</view> 
+<view class='w95 list' wx:else>{{task_info.refund_time}}才可发起退单操作</view>
+
+
+<view class='margin_top padding refund_inst'>
+  <label class='onShow'>退款金额说明：</label>
+  <block wx:for="{{refundInst}}" wx:key="key">
+    <text class='onShow'>{{item}}</text>
+  </block>
+</view>
+

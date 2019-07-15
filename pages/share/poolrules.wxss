@@ -1,0 +1,4 @@
+page{background:#ff5318;}
+.rule_icon{width:40rpx;height:40rpx;}
+.rule_tit{height:100rpx;}
+.reward{height:200rpx;margin-top:70rpx;}

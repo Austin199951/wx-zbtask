@@ -1,0 +1,24 @@
+page{background: #efefef;}
+.task_tit{border-bottom:2rpx solid #efefef; height:70rpx;line-height:70rpx;}
+.address{width:65rpx;height:65rpx;}
+.add_step label{width:135rpx;font-size:28rpx;}
+.add_step image{height:80rpx;width:80rpx;}
+.step_top{margin-top:160rpx;}
+
+.step_box input{height:80rpx;line-height:80rpx;border-bottom: 1rpx solid #efefef;}
+.task_intro image{width:42rpx;height:42rpx;margin-left:20rpx;}
+.preview_con{color:#666;font-size:26rpx;text-indent: 30rpx; line-height:40rpx;letter-spacing:2rpx;margin:8rpx 0 10rpx;margin-bottom:20rpx;}
+.task_intro{border-bottom:1px solid #efefef;}
+.preview_tit{font-size:30rpx;}
+.preview_picture label.position_relative{margin-bottom:20rpx;}
+.preview_picture{margin-bottom:20rpx;}
+.step_box textarea{height:200rpx;}
+.step_name{word-wrap: break-word;width:63%;}
+
+/* 第二步需求列表 */
+.list_demand input{background:#ccc;height:70rpx;}
+.list_demand label text{width:70rpx;}
+.pub_list{height:80rpx;}
+.task_title{height:60rpx;line-height:75rpx;}
+.list_demand .step_na{max-width:300rpx;}
+.list_demand label{max-width:58%;}

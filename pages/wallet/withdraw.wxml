@@ -1,0 +1,67 @@
+<!-- 遮幕 -->
+<view class='position_fixed w100 cover' style='display:{{cover}}'></view>
+<!-- 选择到账银行卡 -->
+<view class='debit_card choose_box position_fixed w100 onHide' style='background:none;'>
+  <view class='border_radius overflow w90'>
+    <block wx:for="{{bankCard}}" wx:key="key">
+      <view class='flex_start_center list choose_bank bg_white' bindtap='chooseBank' data-image='{{item.bankIcon}}' data-text="{{item.bankName}}">
+        <image src='{{item.bankIcon}}' class='bank_icon margin_right margin_left'></image>
+        <text>{{item.bankName}}</text>
+      </view>
+    </block>
+  </view>
+  <view class='list w90 choose_bank margin_top bg_white text_center border_radius' bindtap='close'>取消</view>
+</view>
+
+
+<view class='cover_center position_fixed w90 border_radius1 padding bg_white' style='display:{{arrival_account}}'>
+  <text>提现金额会在1~5个工作日到帐，请耐心等候</text>
+  <text class='btn_circle yellow w70 onShow text_center onfirm_withdraw' bindtap='sure'>确认</text>
+</view>
+
+
+<!-- 备用提现方式 -->
+<view class='standby padding'>
+ <text class='onShow'>提现方式</text> 
+  请输入提现账号，请注意账号必须与本人实名相同，否则可能提现失败 
+</view>
+<view class='border_radius1 w95 bg_white' >
+  <view class='flex_start list padding'>
+    <image src='../../images/alipay.png' class='alipay_wx margin_right'></image>
+    <input placeholder='请输入支付宝账号' bindinput='alipay_x' value='{{alipay}}' placeholder-class='placeholder_class'></input>
+  </view>
+  <view class='flex_start list padding'>
+    <image src='../../images/wx.png' class='alipay_wx margin_right'></image>
+    <input placeholder='请输入微信账号' bindinput='wechat_x' value='{{wechat}}' placeholder-class='placeholder_class'></input>
+  </view>
+</view>
+
+
+<!-- 提现框 -->
+<view class='w95 bg_white margin_top border_radius1 overflow'>
+  <!-- <view class='flex_space_bet debit_card padding' bindtap='debitCard'>
+    到帐银行卡
+    <label class='flex_space_bet'>
+      <block wx:for="{{debit}}" wx:key="key">
+        <view class='flex_start_center'>
+          <image src='{{item.bankIcon}}' class='bank_icon margin_right'></image>
+          <text>{{item.bankName}}</text>
+        </view>
+      </block>
+      <image src='../../images/right_arrow.png' class='right_arrow margin_left'></image>
+    </label>
+  </view> -->
+  <view class='margin_top'>
+    <text class='padding_l_r'>提现金额</text>
+    <view class='flex_start_center cash_money margin_top padding_l_r'>
+      ￥<input type='digit' class='w90' bindinput='withdrawMoney' maxlength='8' value='{{money}}'></input>
+    </view>
+  </view>
+  <view class='padding balance flex_space_bet'>
+    <text>账户余额{{user_money}}元</text>
+    <label class='color_blue' bindtap='withdrawal'>全部提现</label>
+  </view>
+</view>
+
+<text class='btn_circle yellow w50 onShow text_center onfirm_withdraw' bindtap='confirmWithdrawal'>确认提现</text>
+<view class='color_gray w95 margin_top onShow'>*提现到账时间为工作日9:00~18:00，提现将收取提现额{{rate_config.withdraw_rate}}，最低{{rate_config.withdraw_charge}}元的平台使用费，最低提现{{rate_config.withdraw_min_money}}元<text hidden='{{actual}}'>，实际到账{{actual_money}}</text></view>

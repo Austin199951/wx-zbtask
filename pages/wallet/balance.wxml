@@ -1,0 +1,158 @@
+<view class='balance'>
+  <label class='flex_center'>
+    <image src='../../images/balance.png' class='balance_icon margin_right'></image>钱包余额
+  </label>
+  <label class='money flex_center'><text>￥</text>{{user_money}}</label>
+    <!-- <navigator hover-class='none' class='border_gray btn_square bg_green text_center'>充值</navigator>
+     -->
+</view>
+<block wx:for="{{balance}}" wx:key="key">
+  <navigator hover-class='none' url='{{item.balanceUrl}}' class='list flex_space_bet padding'>{{item.balanceNmae}}
+    <image src='../../images/right_arrow.png' class='right_arrow'></image>
+  </navigator>
+</block>
+
+
+<navigator hover-class='none' class='yellow btn_circle text_center w50' url='withdraw?user_money={{user_money}}' style='margin-top:130rpx'>提现</navigator>
+
+<!-- <view class='btn_square flex_space_bet overflow' style="width:70%;margin:23rpx auto 36rpx;">
+  <label class="onShow text_center w50 {{index==0?'yellow':'bg_silver'}}" data-index="0" bindtap="outInCome">收入</label>
+  <label class="onShow text_center w50 {{index==1?'yellow':'bg_silver'}}" data-index="1" bindtap="outInCome">转出</label>
+</view>
+
+<text class='flex_center'>累计挣得：￥0.00</text>
+
+<view class='flex_column no_income'>
+  <image src='../../images/empty.png'></image>
+  <text class='color_blue text_center'>您还没有收入明细,快来赚钱吧</text> 
+</view> -->
+
+<view style='border-top:1px solid #efefef;' hidden="{{index == 1}}" class='onHide'>
+  <view class='list w90 flex_space_bet' style='align-items:flex-start;'>
+    <image src='../../images/task_brokerage.png' class='outincome_icon margin_right  task_commission'></image>
+    <view class='w90 revenue_list'>
+      <label class='flex_space_bet'>
+        任务佣金收入<text class='fail'>+0.01</text>
+      </label>
+      <label class='flex_space_bet'>
+        2018-04-26
+        <navigator hover-class='none' class='flex_space_bet' style='width:20%;'>
+          查看详情 <image src='../../images/right_arrow.png' class='right_arrow'></image> 
+      </navigator>
+      </label>
+    </view>
+  </view>
+  
+  <view class='list w90 flex_space_bet' style='align-items:flex-start;'>
+    <image src='../../images/mission_bounty.png' class='outincome_icon margin_right task_bounty'></image>
+    <view class='w90 revenue_list'>
+      <label class='flex_space_bet'>
+        任务赏金收入<text class='fail'>+0.01</text>
+      </label>
+      <label class='flex_space_bet'>
+        2018-04-26
+        <navigator hover-class='none' class='flex_space_bet' style='width:20%;'>
+          查看详情 <image src='../../images/right_arrow.png' class='right_arrow'></image> 
+      </navigator>
+      </label>
+    </view>
+  </view>
+  <view class='list w90 flex_space_bet' style='align-items:flex-start;'>
+    <image src='../../images/balance_recharge_in.png' class='outincome_icon margin_right recharge'></image>
+    <view class='w90 revenue_list'>
+      <label class='flex_space_bet'>
+        余额充值收入<text class='fail'>+0.01</text>
+      </label>
+      <label class='flex_space_bet'>
+        2018-04-26
+        <navigator hover-class='none' class='flex_space_bet' style='width:20%;'>
+          查看详情 <image src='../../images/right_arrow.png' class='right_arrow'></image> 
+      </navigator>
+      </label>
+    </view>
+  </view>
+  <view class='list w90 flex_space_bet' style='align-items:flex-start;'>
+    <image src='../../images/task_return_income.png' class='outincome_icon margin_right return_task'></image>
+    <!-- 没有图标都有不一样的class 
+    任务佣金收入：task_commission
+    任务赏金收入：task_bounty 
+    余额充值收入：recharge
+    任务返还收入：return_task-->
+    <view class='w90 revenue_list'>
+      <label class='flex_space_bet'>
+        任务返还收入<text class='fail'>+0.01</text>
+      </label>
+      <label class='flex_space_bet'>
+        2018-04-26
+        <navigator hover-class='none' class='flex_space_bet' style='width:20%;'>
+          查看详情 <image src='../../images/rightArrow.png' class='right_arrow'></image> 
+      </navigator>
+      </label>
+    </view>
+  </view>
+</view>
+
+<view style='border-top:1px solid #efefef;' hidden="{{index == 0}}">
+  <view class='list w90 flex_space_bet' style='align-items:flex-start;'>
+    <image src='../../images/task_brokerage.png' class='outincome_icon margin_right  task_commission'></image>
+    <view class='w90 revenue_list'>
+      <label class='flex_space_bet'>
+        任务佣金支出<text class='fail'>+0.01</text>
+      </label>
+      <label class='flex_space_bet'>
+        2018-04-26
+        <navigator hover-class='none' class='flex_space_bet' style='width:20%;'>
+          查看详情 <image src='../../images/rightArrow.png' class='right_arrow'></image> 
+        </navigator>
+      </label>
+    </view>
+  </view>
+  
+  <view class='list w90 flex_space_bet' style='align-items:flex-start;'>
+    <image src='../../images/mission_bounty.png' class='outincome_icon margin_right task_bounty'></image>
+    <view class='w90 revenue_list'>
+      <label class='flex_space_bet'>
+        任务赏金支出<text class='fail'>+0.01</text>
+      </label>
+      <label class='flex_space_bet'>
+        2018-04-26
+        <navigator hover-class='none' class='flex_space_bet' style='width:20%;'>
+          查看详情 <image src='../../images/rightArrow.png' class='right_arrow'></image> 
+      </navigator>
+      </label>
+    </view>
+  </view>
+  <view class='list w90 flex_space_bet' style='align-items:flex-start;'>
+    <image src='../../images/balance_recharge_in.png' class='outincome_icon margin_right recharge'></image>
+    <view class='w90 revenue_list'>
+      <label class='flex_space_bet'>
+        余额充值支出<text class='fail'>+0.01</text>
+      </label>
+      <label class='flex_space_bet'>
+        2018-04-26
+        <navigator hover-class='none' class='flex_space_bet' style='width:20%;'>
+          查看详情 <image src='../../images/rightArrow.png' class='right_arrow'></image> 
+      </navigator>
+      </label>
+    </view>
+  </view>
+  <view class='list w90 flex_space_bet' style='align-items:flex-start;'>
+    <image src='../../images/task_return_income.png' class='outincome_icon margin_right return_task'></image>
+    <!-- 没有图标都有不一样的class 
+    任务佣金收入：task_commission
+    任务赏金收入：task_bounty 
+    余额充值收入：recharge
+    任务返还收入：return_task-->
+    <view class='w90 revenue_list'>
+      <label class='flex_space_bet'>
+        任务返还支出<text class='fail'>+0.01</text>
+      </label>
+      <label class='flex_space_bet'>
+        2018-04-26
+        <navigator hover-class='none' class='flex_space_bet' style='width:20%;'>
+          查看详情 <image src='../../images/rightArrow.png' class='right_arrow'></image> 
+      </navigator>
+      </label>
+    </view>
+  </view>
+</view>

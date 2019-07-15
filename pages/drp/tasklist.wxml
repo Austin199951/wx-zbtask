@@ -1,0 +1,127 @@
+<!-- 导航切换 -->
+<view class='tasklist_title bg_white flex_space_bet padding_l_r'>
+  <block wx:for="{{tasklist}}" wx:key="key">
+    <text bindtap='tasklistBtn' class="text_center onShow {{index == id ? 'tasklist_title_cur' :''}}" data-id='{{index}}'>{{item}}</text>
+  </block>
+</view>
+<view class='cover position_fixed w100' style='display:{{cover}}'></view>
+
+<view class="cover_center position_fixed bg_white w85 border_radius1 step_box" style='display:{{cover}}'>
+  <text class='padding　font_size32 text_center onShow'>温馨提示</text>
+  <view class='padding'>您已成功支付{{task_cn}}任务，请勿重复支付任务，请耐心等待商家审核。</view> 
+  <view class='w70 flex_space_bet margi_t_b40'>
+    <label class='btn_square text_center onShow border_pink' bindtap='cancel'>取消</label>
+    <label class='btn_square text_center onShow border_pink' bindtap='cancel'>确定</label>
+  </view>
+</view>
+
+<!-- 任务列表 -->
+<view class='margin_btm'>
+  <block wx:for="{{getTaskList}}" wx:key="{{key}}" wx:for-index="key">
+    <view class='border_radius w95 bg_white margin_top'>
+      <view class='padding'>
+        <label class='flex_space_bet'>
+          <label class='ellipsis1 task_name'>{{item.task_name}}</label>
+
+          <!-- 任务标题状态 -->
+          <view class='tag'>
+            <block wx:if="{{item.is_refund == 1 || item.apply_refund == 1}}">
+              <text wx:if="{{item.is_refund == 1}}">已退款</text>
+              <text wx:if="{{item.is_refund != 1}}">退款审核中</text>
+            </block>
+
+            <block wx:else>
+                <text wx:if="{{item.is_pay == 1}}">已支付</text>
+                <text class='underway' wx:if="{{item.is_pay == 0}}">未支付</text>
+            </block>
+
+            <text wx:if="{{item.is_publish == 1}}">已发布</text>
+            <text class='audit_fail' wx:if="{{item.is_publish != 1}}">未发布</text>
+            <text class='underway' wx:if="{{item.is_enable == 1}}">已审核</text>
+            <text class='underway' wx:if="{{item.is_enable != 1}}">未审核</text>
+          </view>
+        </label>
+
+        <!-- <text class='task_num'>发布任务数100，剩余100</text> -->
+        <!-- audit_fail：审核失败
+            underway：审核中 -->
+      </view>
+
+      <view class='padding task_time'>
+        <!-- <text class='onShow task_num'>任务编号：65951545689545</text> -->
+        <text class='onShow task_num'>开始时间：{{item.start_time}}</text>
+        <text class='onShow task_num'>结束时间：{{item.end_time}}</text>
+      </view>
+
+      <!-- 任务状态 -->
+      <view class='flex_end padding task_btn border_top'>
+        <view class='btn_square border_gray text_center' data-key='{{key}}' data-task_id='{{item.task_id}}' bindtap='activate_task' wx:if="{{item.is_refund == 1}}">
+          激活任务
+        </view>
+
+        <view bindtap='comments' data-key='{{key}}' data-task_id='{{item.task_id}}' class='btn_square border_gray text_center margin_left position_relative flex_center'>
+          用户留言 
+          <text class='red_dot' wx:if="{{item.drp_read == 0}}"></text>
+        </view>
+        <text  class='btn_square yellow text_center margin_left' data-is_refund='{{item.is_refund}}' data-key='{{key}}' bindtap='more_open'>更多操作</text>
+
+        <template is="task_status" wx:if="{{item.is_refund != 1 && item.apply_refund != 1}}" data='{{d:item, hide:item.is_hidden,is_key:key}}' />
+      </view>
+    </view>
+  </block>
+
+  <!-- 加载更多 -->
+  <image src='/images/loading.gif' class='loading' style='display:{{loading}}'></image>
+  <text class='text_center color_silver'>{{hint}}</text>
+</view>
+
+
+<view wx:if="{{getTaskList.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无发布记录
+</view>
+
+<!-- 更多操作里面的任务状态 -->
+<template name="task_status">
+  <view class='flex_end padding task_btn' hidden='{{hide}}'>
+
+    <block wx:if="{{d.is_refund != 1 && d.apply_refund != 1}}">
+      <navigator hover-class='none' class='btn_square border_silver text_center margin_left position_relative flex_center' url='edittask?task_id={{d.task_id}}' bindtap='close' data-is_key='{{is_key}}'>
+        任务编辑
+      </navigator>
+
+      <navigator hover-class='none' class='btn_square border_silver text_center margin_left position_relative flex_center' url='taskjoin?task_id={{d.task_id}}' bindtap='close' data-is_key='{{is_key}}'>
+        参与情况
+      </navigator>
+
+      <block wx:if="{{d.is_pay != 0}}">  
+        <view data-task_id='{{d.task_id}}' data-is_key='{{is_key}}' bindtap='toggleTask' class='btn_square border_silver text_center margin_left position_relative flex_center' wx:if="{{d.is_publish == 1}}">
+          下架
+        </view>
+        
+        <block wx:elif="{{d.is_pay == 1}}">
+          <navigator hover-class='none' bindtap='close' data-is_key='{{is_key}}' class='btn_square border_silver text_center margin_left position_relative flex_center' url='refundtask?task_id={{d.task_id}}'>退款</navigator>
+          <view bindtap='toggleTask' data-task_id='{{d.task_id}}' data-is_key='{{is_key}}' class='btn_square border_silver text_center margin_left position_relative flex_center margin_top'>上架</view>
+        </block>
+      </block>
+
+      <block wx:else>
+        <view bindtap='pay_click' data-task_name='{{d.task_name}}' data-task_id='{{d.task_id}}' data-is_key='{{is_key}}' class='btn_square border_pink1 text_center margin_left position_relative flex_center'>支付</view>
+        
+        <view bindtap='del_task' data-task_id='{{d.task_id}}' data-is_key='{{is_key}}' class='btn_square border_silver text_center margin_left position_relative flex_center margin_top'>删除</view>
+      </block>
+
+    </block>
+  </view>
+
+  <!-- <view class='list w90 choose_bank margin_top bg_white text_center border_radius' data-is_key='{{is_key}}' bindtap='close'>
+    取消
+  </view> -->
+</template>
+
+
+  <!-- 发布任务按钮 -->
+<view class='flex_space_bet position_fixed w100 edittask_btn'>
+  <text class='w50 onShow pale_yellow text_center' bindtap='logout'>退出</text>
+  <text class='w50 onShow yellow text_center' bindtap='new_task'>新建任务</text>
+</view>

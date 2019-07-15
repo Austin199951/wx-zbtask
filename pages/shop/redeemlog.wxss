@@ -1,0 +1,4 @@
+page{background:#efefef;}
+.record_info {line-height:40rpx;}
+.record_info{width:58%;}
+.redeemlog_btn{height:130rpx;line-height: 130rpx;}

@@ -1,0 +1,7 @@
+<!--setting.wxml-->
+<view class='container bg_white'>
+  <block wx:for="{{settingList}}">
+    <view class="setting_item flex_space_bet list w90">{{item.name}} <switch wx:if="{{item.switch}}" ></switch></view>
+  </block>
+</view>
+<view class='edition'>当前版本号：2.0.0</view>

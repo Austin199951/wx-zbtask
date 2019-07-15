@@ -1,0 +1,10 @@
+<view class='text_center withdraw_succ bg_white'>
+  <view class='pay_success'>
+    <image src='../../images/pay_success.png'></image>
+    <view>提现申请成功</view>
+  </view>
+  <view class='padding_t_b color_gray'>
+    提现金额会在1~5个工作日到帐，请耐心等候
+    <text class='onShow'>请耐心等待管理员审核</text>
+  </view>
+</view>

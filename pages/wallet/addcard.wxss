@@ -1,0 +1,6 @@
+.add_card_list label{width:130rpx;}
+.add_card_list input{width:80%;}
+.add_card_list .msg_code{width:53%;}
+.bg_silver {background:#efefef;}
+.task_num{color:#000;}
+.small_checkbox{zoom: 60%;}

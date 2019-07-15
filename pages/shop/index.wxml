@@ -1,0 +1,22 @@
+<navigator hover-class='none' url='redeemlog' class='flex_space_bet padding_l_r w95 position_fixed edittask_btn bg_white' style='border:none;top:0rpx;'>
+  兑换记录 <image src='/images/right_arrow.png' class='right_arrow'></image>
+</navigator>
+
+<view class='flex_space_bet_wrap point_list padding margin_top_pub'>
+  <block wx:for="{{good_list}}" wx:key="key">
+    <navigator hover-class='none' class='border_radius1 bg_white overflow position_relative' url='gooddetail?good_id={{item.good_id}}'>
+      <view class='point_img w100'>
+        <image src='{{item.pic_url}}' class='w100 h100'></image>
+        <!-- 特价标签 -->
+        <text class='position_absolute at_sale font_size24 color_white onShow text_center' wx:if="{{item.is_discount == 1}}">特价</text>
+      </view>
+      <text class='margin_top onShow ellipsis1 w90'>{{item.name}}</text>
+      <text class='onShow w90 fail'>{{item.point}}积分/{{item.price}}元</text>
+    </navigator>
+  </block>
+</view>
+
+<view wx:if="{{good_list.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无可兑换商品
+</view>

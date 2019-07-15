@@ -1,0 +1,2 @@
+page{background: #efefef;}
+.online_customer{background: white;border-radius: 0px; line-height: 0px; position: static;}

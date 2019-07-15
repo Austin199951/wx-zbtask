@@ -1,0 +1,66 @@
+<!-- 留言内容 -->
+<view wx:if="{{chat_info.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无留言信息
+</view>
+
+<view class='margin_btm'>
+  <block wx:for="{{chat_info}}" wx:key="key">
+    <!-- 用户 -->
+    <label class='padding onShow' wx:if="{{item.sender_type == 1}}">
+      <view class='flex_center'><text class='msg_time color_silver'>{{item.add_time}}</text></view>
+      <view class='flex_start_center margin_top'>
+        <label class='onShow user_total overflow margin_right'>
+          <image src='{{item.head_img_url}}' class='public_img'></image>
+        </label>
+          <!-- 用户头像加：margin_right
+          我自己头像加：margin_left
+          商家头像加：margin_right -->
+        <view class='bg_white margin_left pocket border_radius1  position_relative'>
+          <text class='pocket_arr pocket_me'></text>{{item.content}}
+        </view>
+            <!-- 用户留言框加：pale_yellow、margin_left    小箭头加：pocket_user
+            我留言框加：bg_white、margin_right         小箭头加：pocket_me
+            留言框加：bg_blue 、margin_left               小箭头加：pocket_merchant -->
+      </view>
+    </label>
+
+
+    <!-- 我自己 -->
+    <label class='padding onShow' wx:if="{{item.sender_type == 2}}">
+      <view class='flex_center'><text class='msg_time color_silver'>{{item.add_time}}</text></view>
+
+      <view class='flex_end margin_top'>
+        <view class='pocket border_radius1 position_relative pale_yellow margin_right'>
+          <text class='pocket_arr pocket_user'></text>
+            {{item.content}}
+        </view>
+        <label class='onShow user_total overflow margin_left'>
+          <image src='/images/user.png' style='width:120rpx;height:120rpx;'></image>
+        </label>
+      </view>
+    </label>
+
+    <!-- 商家 -->
+    <label class='padding onShow' wx:if="{{item.sender_type == 3}}">
+      <view class='flex_center'><text class='msg_time color_silver'>{{item.add_time}}</text></view>
+      <view class='flex_start_center margin_top'>
+        <label class='onShow user_total overflow margin_right'>
+          <image src='/images/shop_total.png' class='public_img'></image>
+        </label>
+        <view class='margin_left pocket border_radius1 bg_blue position_relative color_white'>
+          <text class='pocket_arr pocket_merchant'></text>
+            {{item.content}}
+        </view>
+      </view>
+    </label> 
+ 
+</block>
+</view>
+
+
+<!-- 发送一条内容 -->
+<view class="chat_box flex_space_bet bg_white padding position_fixed w95 edittask_btn padding_l_r">
+  <input placeholder='请输入要提问内容' class='padding_l_r' bindinput='content' value='{{inputValue}}'></input>
+  <view class='onShow bg_blue btn_circle text_center color_white' bindtap='sengMsg'>提交</view>
+</view>

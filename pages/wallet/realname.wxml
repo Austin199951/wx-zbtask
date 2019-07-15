@@ -1,0 +1,15 @@
+<text class="onShow bg_999 padding font_size26 color_silver">请正确填写与您手机号相关的身份认证信息</text>
+<view class='flex_start_center pub_list realname_list font_size30'>
+  <text>手机号</text>
+  <input class='h100 w80' disabled='true' value='{{mobile}}'></input>
+</view>
+<view class='flex_start_center pub_list realname_list font_size30'>
+  <text>真实姓名</text>
+  <input placeholder='请输入真实姓名' class='h100 w80' bindinput='true_name' value='{{truename}}'></input>
+</view>
+
+<view class='flex_start_center pub_list realname_list font_size30'>
+  <text>身份证号</text>
+  <input placeholder='请输入身份证号' class='h100 w80' bindinput='id_card' value='{{idcard}}'></input>
+</view>
+<view class='btn_circle yellow w70 margin_top_pub text_center' bindtap='confirm'>提交</view>

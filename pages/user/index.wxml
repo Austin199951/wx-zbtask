@@ -1,0 +1,46 @@
+<image src='../../images/user_info.png' class='w100 position_absolute user_info'></image>
+<view class='w100 flex_start_center h100 position_absolute user_info'>
+  <label class='onShow user_total overflow margin_left'>
+    <image src='{{userMsg.user_info.head_img_url}}' class='public_img'></image>
+  </label>
+
+  <view class='user_info_box margin_left'>
+    <label class='flex_space_bet'> 
+      <text class='ellipsis1 font_size34' style="max-width:200rpx;">{{userMsg.user_info.username}}</text> 
+      <!-- <label class='autonym_box flex_center margin_left'>
+        <image src='../../images/autonym.png' class='autonym'></image>已实名
+      </label> -->
+      <text bindtap='logout'>退出登陆</text>
+    </label>
+    <!-- <text class='user_id onShow'>ID:252525252</text> -->
+    <navigator hover-class='none' class='btn_square color_white pink text_center margin_top' url='../wallet/balance?user_money={{userMsg.user_info.user_money}}'>￥{{userMsg.user_info.user_money}}</navigator>
+  </view>
+</view>
+
+
+<!-- 用户列表 -->
+<view class='bg_white border_radius w95 user_list flex_start_center position_relative' style='top:280rpx;'>
+  <text class='user_tit font_size34 border_btm w100 onShow'>个人中心</text>
+  <block wx:for="{{userList}}" wx:key="key">
+    <navigator  hover-class='none' class='flex_center flex_column font_size28' url='{{item.listUrl}}'>
+      <image src='{{item.icon}}' class='list_icon'></image>
+      {{item.listName}}
+    </navigator>
+  </block>
+</view>
+
+<view class='bg_white border_radius w95 user_list position_relative' style='top:290rpx;'>
+  <text class='user_tit font_size34 border_btm w100 onShow'>商家中心</text>
+  <navigator hover-class='none' class='flex_center flex_column font_size28' url='../drp/tasklist'>
+    <image src='/images/manage_icon.png'></image>
+    任务管理
+  </navigator>
+</view>
+
+<view class='bg_white border_radius w95 user_list position_relative' style='top:300rpx;'>
+  <text class='user_tit font_size34 border_btm w100 onShow'>商家中心</text>
+  <navigator hover-class='none' class='flex_center flex_column font_size28' url='../index/helpcenter'>
+    <image src='/images/question_icon.png'></image>
+    常见问题
+  </navigator>
+</view>

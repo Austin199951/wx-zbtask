@@ -1,0 +1,5 @@
+page{background: #efefef;}
+.upload_docu>view{margin:30rpx 0 0;}
+.add_picture view label{margin:0 20rpx 0 0;}
+.voucher_desc textarea{width:93%;}
+.record label.position_relative{margin:0 20rpx 20rpx 0;}

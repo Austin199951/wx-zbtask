@@ -1,0 +1,23 @@
+<block wx:for="{{msg_list}}" wx:key="key" wx:for-index="key">
+  <view bindtap='check_detail' data-message_id='{{item.message_id}}' bindtap='view_msg' class='flex_start_center bg_white padding list' data-key='{{key}}' data-is_read='{{item.is_read}}'>
+    <!-- <image src='../../images/info.png' class='info_icon'></image> -->
+    
+      <view class='flex_space_bet w100'>
+        <view class='onShow msg_name font_size32 position_relative' style='width:70%;'>
+          {{item.title}}
+          <text class='position_absolute unread' wx:if="{{item.is_read == 0}}"></text>
+        </view>
+        <text class='task_num font_size24 onShow'>{{item.add_date}}</text>
+      </view>
+  
+    <text class='msg_con margin_top onShow ellipsis1 color_silver'>{{item.message}}</text>
+      <!-- <navigator hover-class='none' class='flex_space_bet color_blue' url='' style='width:22%;' url='../task/mytasklist'>
+        点击查看<image src='../../images/more.png' class='right_arrow'></image>
+      </navigator> -->
+  </view>
+</block> 
+
+<view wx:if="{{msg_list.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无信息
+</view>

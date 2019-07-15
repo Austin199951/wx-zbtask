@@ -1,0 +1,33 @@
+<view class='pub_list padding_l_r drp_apply flex_start_center'>
+  <label class='flex_start_center'>
+    <image src='/images/store_name.png' class='margin_right'></image>
+    店铺名称：
+  </label>
+  <input placeholder='请输入店铺名称' bindinput='store_name' value='{{store_cn}}'></input>
+</view>
+
+<view class='pub_list padding_l_r drp_apply flex_start_center'>
+  <label class='flex_start_center'>
+    <image src='/images/shop_name.png' class='margin_right'></image>
+    联系人姓名：
+  </label>
+  <input placeholder='请输入联系人姓名' bindinput='contacts' value='{{linkman}}'></input>
+</view>
+
+<view class='pub_list padding_l_r drp_apply flex_start_center'>
+  <label class='flex_start_center'>
+    <image src='/images/store_wx.png' class='margin_right'></image>
+    微信号：
+  </label>
+  <input placeholder='请输入联系人微信号' bindinput='store_wx' value='{{wechat}}'></input>
+</view>
+
+<view class='pub_list padding_l_r drp_apply flex_start_center'>
+  <label class='flex_start_center'>
+    <image src='/images/store_qq.png' class='margin_right'></image>
+    QQ号：
+  </label>
+  <input placeholder='请输入联系人QQ号' bindinput='store_qq' value='{{qq}}'></input>
+</view>
+
+<view class="btn_circle yellow text_center w70 margin_top_pub" bindtap='confirm'>确定</view>

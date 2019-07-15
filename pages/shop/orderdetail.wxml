@@ -1,0 +1,172 @@
+<!-- 申请退换货 -->
+<view class='cover position_fixed w100' style='display:{{cover}}'></view>
+<view class="cover_center position_fixed bg_white w85 border_radius1" style='display:{{return_msg}}'>
+  <text class='onShow text_center margin_top padding font_size32'>申请退换货</text>
+
+  <textarea class='w80 padding border_radius1 border_silver1 return_msg' value='{{return_info}}' placeholder-class='placeholder_class' placeholder='请输入退换货信息' bindinput='return_msg'></textarea>
+
+
+  <text  class='w90 onShow font_size26 color_silver marked_words'>可添加最多10张介绍图</text>
+  <view class='text_center flex_start_center add_picture w90 margin_top' style='align-items: flex-start;'>
+    <!-- 添加图片按钮 -->
+    <label class='onShow' bindtap='upload_pictures'>
+      <image src='/images/camera.png' class='public_img'></image>
+    </label>
+
+    <!-- 图片展示 -->
+    <block wx:for="{{picture}}" wx:key="key">
+      <label class='onShow position_relative'>
+        <image src='{{item.v_simg}}' class='public_img'></image>
+        <image src='/images/cancel.png' class="position_absolute del" data-log_id='{{item.log_id}}' bindtap='del'></image>
+      </label>
+    </block>
+  </view>
+
+  <text class='w90 onShow color_pink'>*请填写退货信息并上传凭证图片，客服【微信号hktao02】将和您取得联系。</text>
+  
+  <view class='w70 flex_space_bet margi_t_b40'>
+    <label class='btn_square text_center onShow border_pink' bindtap='close'>取消</label>
+    <label class='btn_square text_center onShow border_pink1' bindtap='confirm'>确定</label>
+  </view>
+</view>
+
+
+<!-- 商品 -->
+<view class='border_btm padding flex_space_bet bg_white'>
+  <view class='exchange_img'><image src='{{order_info.snapshot.pic_url}}' class='w100 h100'></image></view>
+  <view class='record_info'>
+    <text class='ellipsis2'>{{order_info.snapshot.name}}</text>
+    <view class='flex_space_bet margin_top'>
+      <text class='flex_space_bet fail font_size26'>{{order_info.snapshot.point}}积分+66元</text>
+      <!-- {if condition="$order_info.is_pay==1 and $order_info.is_cs==0 and $order_info.is_finish==0 and $order_info.is_refund==0"} -->
+
+      <text wx:if="{{order_info.is_pay == 1 && order_info.is_cs==0 && order_info.is_finish==0 && order_info.is_refund==0}}" class='color_silver border_silver border_radius1 font_size26' bindtap='as_click' style='padding:10rpx;'>申请退换货</text>
+    </view>
+  </view>
+</view>
+
+<!-- 订单信息 -->
+<view class='bg_white margin_top'>
+  <view class='flex_space_bet pub_list padding_l_r'>
+    <text class='color_silver'>订单编号</text>{{order_info.order_sn}}
+  </view>
+  <view class='flex_space_bet pub_list padding_l_r'><text class='color_silver'>支付金额</text>{{pay_info.total_fee}}元</view>
+  <view>
+    <text class='color_silver onShow margin_top padding_l_r'>订单留言</text>
+    <text class='onShow order_msg' wx:if="{{order_info.msg != ''}}">{{order_info.msg}}</text>
+    <text class='onShow order_msg' wx:elif="{{order_info.msg == ''}}">暂无留言</text>
+  </view>
+</view>
+
+
+<!-- 订单流水 -->
+<view class='margin_top bg_white padding margin_btm'>
+  <!-- 用户发起订单 -->
+  <view class='overflow order_flow clear'>
+    <!-- 流水线 -->
+    <view class='order_flow_line flex_center flex_column'>
+      <text class='small_dot'></text>
+      <text class='flow_line onShow'></text>
+    </view>
+
+    <!-- 时间、流水信息 -->
+    <view class='flow_info'>
+      <text class='onShow color_silver font_size24'>{{order_info.add_time}}</text>
+      <view class='margin_top wrap_text '>用户发起订单</view>
+    </view>
+  </view>
+  
+  <!-- 订单处理中 -->
+  <view class='overflow order_flow clear'>
+    <!-- 流水线 -->
+    <view class='order_flow_line flex_center flex_column'>
+      <text class='small_dot'></text>
+      <text class='flow_line onShow'></text>
+    </view>
+
+    <!-- 时间、流水信息 -->
+    <view class='flow_info'>
+      <text class='onShow color_silver font_size24'>{{pay_info.add_time}}</text>
+      <view class='margin_top wrap_text '>用户支付成功，订单处理中</view>
+    </view>
+  </view>
+
+
+  <!-- 订单流水 -->
+  <block wx:for="{{order_follow}}" wx:key="key">
+    <view class='overflow order_flow clear'>
+      <!-- 流水线 -->
+      <view class='order_flow_line flex_center flex_column'>
+        <text class='small_dot'></text>
+        <text class='flow_line onShow'></text>
+      </view>
+
+      <!-- 时间、流水信息 -->
+      <view class='flow_info'>
+        <text class='onShow color_silver font_size24'>{{item.add_time}}</text>
+        <view class='margin_top wrap_text '>{{item.desc}}</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 订单留言 -->
+  <block wx:for="{{cs_info}}" wx:key="key" wx:if="{{order_info.is_cs == 1}}">
+    <view class='overflow order_flow clear'>
+      <!-- 流水线 -->
+      <view class='order_flow_line flex_center flex_column'>
+        <text class='small_dot'></text>
+        <text class='flow_line onShow'></text>
+      </view>
+
+      <!-- 时间、流水信息 -->
+      <view class='flow_info'>
+        <text class='onShow color_silver font_size24'>{{item.add_time}}</text>
+        <view class='margin_top wrap_text '>提出售后内容为{{item.content}}</view>
+        <image wx:if="{{item.v_img != ''}}" src='{{item.v_simg}}'></image>
+      </view>
+    </view>
+  </block>
+
+  <!-- 退款成功 -->
+  <view class='overflow order_flow clear' wx:if="{{order_info.is_refund == 1 && refund_info != null}}">
+    <!-- 流水线 -->
+    <view class='order_flow_line flex_center flex_column'>
+      <text class='small_dot'></text>
+      <text class='flow_line onShow'></text>
+    </view>
+
+    <!-- 时间、流水信息 -->
+    <view class='flow_info'>
+      <text class='onShow color_silver font_size24'>{{refund_info.add_time}}</text>
+      <view class='margin_top wrap_text '>商家同意退款，到账时间为{{refund_info.confirm_time}}</view>
+    </view>
+  </view>
+
+  <!-- 完成订单 -->
+  <view class='overflow order_flow clear' wx:if="{{order_info.is_finish == 1}}">
+    <!-- 流水线 -->
+    <view class='order_flow_line flex_center flex_column'>
+      <text class='small_dot'></text>
+      <text class='flow_line onShow'></text>
+    </view>
+
+    <!-- 时间、流水信息 -->
+    <view class='flow_info'>
+      <text class='onShow color_silver font_size24'>{{order_info.finish_time}}</text>
+      <view class='margin_top wrap_text '>用户已确认收货，订单完结</view>
+    </view>
+  </view>
+
+</view>
+
+<block wx:if="{{order_info.is_finish == 0}}">
+  <view wx:if="{{order_info.is_cs == 0}}" class='w100 onShow yellow text_center position_fixed w100 edittask_btn' bindtap='finish'>确认收货</view>
+
+  <block wx:else>
+    <text wx:if="{{order_info.is_refund == 0}}" class='w100 onShow pink text_center position_fixed w100 edittask_btn'>已申请售后</text>
+
+    <text wx:if="{{order_info.is_refund != 0}}" class='w100 onShow bg_silver text_center position_fixed w100 edittask_btn'>订单已退款</text>
+  </block>
+</block>
+
+<text wx:else class='w100 onShow bg_silver text_center position_fixed w100 edittask_btn'>订单已结束</text>

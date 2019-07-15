@@ -1,0 +1,31 @@
+  <view class="bg_silver padding task_num">请正确填写您的收款银行卡信息，您填写的银行卡开户名需与您填写的身份证姓名一致</view>
+  <view class='add_card_list'>
+      <view class='list flex_start_center padding'>
+        <label class='onShow'>真实姓名</label> <input placeholder='请输入您的真实姓名' bindinput='realname' value='{{realName}}'></input>
+      </view>
+      <view class='list flex_start_center padding'>
+        <label class='onShow'>身份证号</label> <input placeholder='请输入您的身份证' type='idcard' bindinput='idcard' value='{{idCard}}'></input>
+      </view>
+    </view>
+
+  <view class='add_card_list'>
+    <view class='list flex_start_center padding'>
+      <label class='onShow'>银行卡号</label> <input placeholder='请输入您的银行卡' bindinput='bankcard' value='{{bankCard}}'></input>
+    </view>
+    <view class='list flex_start_center padding'>
+      <label class='onShow'>手机号码</label> <input placeholder='请输入您的手机号码' bindinput='mobile' value='{{mobile}}'></input>
+    </view>
+    <view class='list flex_start_center padding'>
+      <label class='onShow'>验证码</label> 
+      <input placeholder='短信验证码' class='msg_code' bindinput='msgcode' value='{{msgcode}}'></input> 
+      <text class='btn_square get_code text_center' bindtap='getcode'>{{getCode}}</text>
+    </view>
+
+    <view class='padding task_num flex_start_center'> 
+      <checkbox-group>
+        <checkbox value="" checked="true" class='small_checkbox'/>
+      </checkbox-group>
+      同意既代表推手协议
+    </view>
+ </view>
+<view class='btn_circle yellow w50 text_center' style='margin-top:100rpx;' bindtap='confirmation'>确认添加</view>

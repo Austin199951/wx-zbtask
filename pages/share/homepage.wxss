@@ -1,0 +1,29 @@
+page{background:#efefef;}
+.index_banner{border-top:2px solid white;}
+.plum image{height:3rpx; width:25%;}
+.hot{width:25rpx;height:28rpx;}
+.plum{font-size:34rpx;height:100rpx;}
+.screening{height:68rpx;line-height: 68rpx;border-bottom:1px solid #efefef;}
+.screening text{width:33.3%;border-right:1px solid #ffdb32; height: 50%;line-height:30rpx;color:#666;}
+.screening text:last-child{border:none;}
+.screening .font_bold{color:#333;}
+.sur_search{height:100%; line-height:88rpx;width:70rpx;}
+.classify {font-size:26rpx;}
+.hot_tag view{display: inline-block;margin-bottom:20rpx;}
+.hot_tag text{padding:8rpx 20rpx;font-size:26rpx; display: inline-block;}
+.hot_tag .delete{width:28rpx;height:28rpx; right:-10rpx;top:-10rpx;}
+.bg_silver{color:#5a5a5a;}
+
+/* 签到框 */
+.gold{width: 80rpx;height:80rpx;top:-40rpx;left:50%;transform: translateX(-50%);}
+.sign_icon{height:53%;}
+.sign_icon image{width:40rpx;height:40rpx;}
+.sign_box view{border-right:white 1px solid;height:160rpx; width: 16.6%;font-size:28rpx;}
+.sign_box text{height:70rpx;line-height: 70rpx; display: block;border-bottom:white 1px solid;}
+.sign_explain{margin-top:35rpx;}
+.sign_explain .start{width:35rpx;height:35rpx; }
+.sign_explain_tit{margin-bottom:20rpx;}
+.sign_explain label text{width:70%;}
+.sign_explain .task_num{line-height:45rpx; letter-spacing: 1rpx;}
+.more_records{font-size:28rpx;}
+.cover_center{border-radius: 10rpx;padding:20rpx;}

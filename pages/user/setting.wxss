@@ -1,0 +1,11 @@
+/**index.wxss**/
+page{background-color: #efefef;}
+.container{
+  margin-top:8rpx;  
+}
+.edition{
+  padding-top: 20rpx;
+  color: #5b5b5b;
+  text-align: center;
+}
+

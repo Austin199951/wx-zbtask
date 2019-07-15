@@ -1,0 +1,11 @@
+page{background:#efefef;}
+.condition{border-bottom:1px solid #efefef;}
+.tasklist_title>view{width:25%;height:100%;}
+.filter_arrow{width:18rpx;height:30rpx;margin-left:10rpx;}
+.filter_cover{top:172rpx;z-index: 3;}
+.filter_cover view{border-bottom:1rpx solid #efefef;font-size:26rpx;}
+.screen_nav_cur{color:#ffa02f;}
+.search{width:87%;margin:0 auto;}
+.hot{width:25rpx;height:28rpx;}
+.filter_icon{width:40rpx;height:40rpx;}
+.search_box{width:85%;}

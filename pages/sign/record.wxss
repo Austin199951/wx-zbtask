@@ -1,0 +1,5 @@
+page{background:#efefef;}
+.sign{width:40rpx;height:40rpx;}
+.record_list{line-height:50rpx;}
+.sign_label{width:165rpx;height:160rpx; top:-10rpx;right:-40rpx;}
+.record_list .color_pink{margin-right:80rpx;}

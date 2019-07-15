@@ -1,0 +1,9 @@
+<view class='pub_list bg_white flex_space_bet padding'>
+  <view>
+    签到获得积分
+    <text class='color_silver font_size26 onShow margin_top'>2018-09-03 08:17:28</text>
+  </view>
+  <view class='fail flex_space_bet'>
+    1.00 <image src='/images/species.png' class='species margin_left'></image>
+  </view>
+</view>

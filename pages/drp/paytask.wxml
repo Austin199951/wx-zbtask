@@ -1,0 +1,6 @@
+<view class="padding bg_white border_radius1 w90 margin_top paytask">
+  <block wx:for="{{paytask}}" wx:key="key">
+    <label class='flex_space_bet'>{{item.payName}}<text class='onShow'>{{item.payNum}}</text></label>
+  </block>
+  <view class='btn_circle yellow text_center w50 margin_top'>支付</view>
+</view>

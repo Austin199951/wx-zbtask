@@ -1,0 +1,5 @@
+page{background:#efefef;}
+.address_icon{width:58rpx;height:58rpx;}
+.order_info text,.order_info view{line-height:60rpx;}
+.edit_icon{width:30rpx;height:30rpx;}
+.msg{height:100rpx;}

@@ -1,0 +1,41 @@
+<view class='list padding bg_white flex_space_bet editinfo' bindtap='upload_img'>
+  <text>头像</text> 
+  <view class='flex_end'>
+    <label class='onShow user_total overflow'>
+      <image class="public_img" src="{{head_img_url}}"></image>
+      <image wx:if="{{user_info == ''}}" src='/images/user.png'></image>
+    </label>
+    <image src='/images/right_arrow.png' class='right_arrow margin_left'></image>
+  </view>
+</view>
+<view class='list padding bg_white flex_space_bet editinfo'>
+  <text>昵称</text>
+  <view class='flex_space_bet'>
+    <input value='{{username}}' bindinput='nickname' placeholder='请输入昵称' class='info_inp border_radius1'></input>
+    <image src='/images/close.png' data-num='1' bindtap='close' class='close margin_left'></image>
+  </view>
+</view>
+
+<view class='list padding bg_white flex_space_bet editinfo'>
+  <text>电子邮箱</text>
+  <view class='flex_space_bet'>
+    <input placeholder='请输入电子邮箱' bindinput='mailbox' value='{{email}}' class='info_inp border_radius1'></input>
+    <image src='../../images/close.png' data-num='2' bindtap='close' class='close margin_left'></image>
+  </view>
+</view>
+
+<!-- 已实名 
+<view class='list padding bg_white flex_space_bet editinfo'>
+  <text>已实名</text>岑雪盈
+</view>-->
+
+<!-- 未实名
+<view class='list padding bg_white flex_space_bet editinfo'>
+  <text>实名认证</text>
+  <view class='flex_space_bet color_blue'>
+    点击实名
+    <image src='../../images/more.png' class='right_arrow margin_left'></image>
+  </view>
+</view> -->
+
+<text class='btn_circle yellow text_center onShow w60 margin_top_pub' bindtap='save_edit'>保存修改</text>

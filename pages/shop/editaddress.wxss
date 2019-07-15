@@ -1,0 +1,13 @@
+page{background:#efefef;}
+.full_address{width:95%;}
+
+/* 地区弹出 */
+.region_box{border-radius:15rpx 15rpx 0 0; min-height: 800rpx; z-index: 6;bottom:0rpx;}
+.region_box .tit{width:55%;}
+.region_box .tit_box{height:80rpx;line-height: 80rpx;}
+.region_box .close{width:30rpx;height:30rpx;}
+.region_box .selected{height:88rpx;line-height:88rpx;}
+.region_box .selected text{width:33%;}
+.region_box .area{height:70rpx;line-height: 70rpx;padding:0 40rpx;}
+.scroll_area{max-height:520rpx;overflow: scroll;margin-top:270rpx;}
+.scroll_area .tick{width:38rpx;height:30rpx;}

@@ -1,0 +1,29 @@
+<image src="/images/poolrules_bg.png" class="w100"></image>
+<view class='bg_white w85 border_radius1 padding margin_btm' style='margin-top:-8rpx;'>
+  <view class='font_size32 text_center flex_center rule_tit'>
+    <image src='/images/rule_icon.png' class='rule_icon margin_right'></image>
+    活动规则<image src='/images/rule_icon.png' class='rule_icon margin_left'></image>
+  </view>
+
+  <text class='margin_top onShow'>一、活动时间：2018年8月20日-9月20日</text>
+  <text class='margin_top onShow'>二、奖金池设置金额：30000 元</text>
+  <view class='color_silver margin_top reward_list'>
+    <text class='onShow'>1、会员转发邀请码卡片到朋友圈/微信群/小伙伴微信上</text>
+    <text class='margin_top onShow'>2、每成功推荐1名小伙伴注册众帮推手会员并实名认证即可获得 元，每天限量20名。</text>
+    <text class='onShow margin_top'>3、本次活动所有解释权归众帮推手所有。</text>
+  </view>
+
+  <text class='margin_top onShow'>三、额外红包奖励</text>
+
+  <view class='reward_list color_silver'>
+    <text class='onShow margin_top'>推荐人数达到100人，即可奖励 88元</text>
+    <text class='onShow'>推荐人数达到100人，即可奖励 88元</text>
+    <text class='onShow'>推荐人数达到100人，即可奖励 88元</text>
+  </view>
+
+  <image src='/images/reward.png' class='reward w100'></image>
+</view> 
+
+<view class='flex_space_bet position_fixed w100 edittask_btn'>
+  <navigator hover-class='none' url='../user/bonuspoolactivity' class='w100 onShow yellow text_center' style='border:none;'>前往活动页面</navigator>
+</view>

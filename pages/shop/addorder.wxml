@@ -1,0 +1,40 @@
+<navigator wx:if="{{address_info == null}}" hover-class='none' class="flex_start_center bg_white padding" url='useraddress?good_id={{good_id}}'>
+  <image src='/images/address1.png' class='address_icon margin_right'></image>添加收获地址
+</navigator>
+
+<!-- 已有地址 -->
+<navigator wx:else class="bg_white border_btm padding" url='useraddress?good_id={{good_id}}'>
+  <view>
+    {{address_info.contact}}<text class='margin_left color_silver font_size26'>{{address_info.mobile}}</text>
+    <image src='/images/edit_icon.png' class='margin_left edit_icon'></image>
+  </view>
+  <text class='onShow' style='margin-top:8rpx;'>{{address_info.full_address}}</text>
+</navigator>
+
+
+<!-- 商品信息 -->
+<view class='padding flex_space_bet' style='background:#f9fafe'>
+  <view class='exchange_img'><image src='{{good_info.pic_url}}' class='w100 h100'></image></view>
+  <view class='record_info'>
+    <text class='ellipsis2'>{{good_info.name}}</text>
+    <view class='flex_space_bet margin_top fail'>
+      {{good_info.point}}积分/{{good_info.price}}元
+      <!-- <text class='color_silver'>2016-06-05</text> -->
+    </view>
+  </view>
+</view>
+
+<textarea class='padding w100 margin_top bg_white msg' bindinput='message' value='{{msg}}' placeholder='请输入订单留言内容'></textarea>
+<!-- <view class='padding bg_white order_info'>
+  <view class='flex_space_bet'>商品金额<text>￥300.00</text></view>
+  <view class='flex_space_bet'>积分抵扣<text>￥300.00</text></view>
+  <view class='flex_space_bet'>运费<text>￥300.00</text></view>
+  <view class='flex_space_bet'>实付<text class='fail'>￥300.00</text></view>
+  <text class='flex_space_bet'>订单编号：568554221212212212</text>
+  <text class='flex_space_bet'>时间：2016-06-05  13：22：10</text>
+</view> -->
+
+<view class='flex_space_bet bg_white position_fixed w100 edittask_btn'>
+  <view class='padding_l_r'>需支付 <text class='fail font_size36'>{{good_info.price}} 元</text></view>
+  <text class='w30 onShow yellow text_center' style='border:none;' bindtap='confirm_pay'>确认支付</text>
+</view>

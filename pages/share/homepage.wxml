@@ -1,0 +1,190 @@
+<!-- 签到框 -->
+<view class='cover position_fixed w100' style='display:{{display}}'>
+  <view class='cover_center position_absolute bg_white w85 border_radius1 padding'>
+  <image src='../../images/cancel.png' class='position_absolute cancel' bindtap='cancel'></image>
+    <image src='../../images/gold.png' class='gold position_absolute'></image>
+    请签到：
+    <label class='margin_top flex_space_bet text_center pale_yellow sign_box'>
+      <block wx:for="{{signBox}}" wx:key="key">
+        <view>
+          <text>{{item}}</text>
+          <label bindtap='sign_in' data-index='{{index}}' class='w100 sign_icon flex_center'>
+            <image src='{{signBg}}'></image>
+          </label>
+        </view>
+      </block>
+    </label>
+
+    <view class='sign_explain'>
+      <text class='sign_explain_tit onShow'>签到规则说明：</text> 
+      <block wx:for="{{signExplain}}" wx:key="key">
+        <label class='flex_start'>
+          <image src='../../images/start.png' class='start margin_right'></image> 
+          <text class='task_num onShow'>{{item}}</text>
+        </label>
+      </block>
+    </view>
+    <navigator hover-class='none' class='flex_end padding_t_b more_records color_blue' url='../sign/record'>
+      查看更多记录<image src='../../images/check.png' class='right_arrow margin_left'></image>
+    </navigator>
+  </view>
+</view>
+
+<!-- 搜索框 -->
+<view class='search flex_center position_fixed w100' style='z-index:2;'>
+  <image src='../../images/return.png' bindtap='goBack' class="go_back margin_right onHide{{search ? 'onShow' : ''}}"></image>
+  <view class='search_box flex_start_center bg_white' bindtap='searchBox'>
+    <image src='../../images/index_search.png' class='margin_l_r index_search'></image>
+    <input placeholder='戳这里，任务搜一搜' placeholder-class='placeholder_class' class='w85' bindinput='searchInp' value='{{searchVal}}'></input>
+  </view>
+  <view bindtap='confirmSearch' class="margin_left sur_search text_center onHide{{search ? 'onShow' : ''}}">搜索</view>
+</view>
+
+
+<!-- 热门服务 -->
+<view hidden='{{allClassify}}' class='position_relative' style='top:90rpx;'>
+  <view class='padding' >
+    热门服务
+    <view class='classify text_center flex_start_center bg_white margin_top border_radius1'>
+      <block wx:for="{{getCatInfo}}" wx:key="key">
+        <navigator hover-class='none' url='searchresult?task_type={{item.cat_id}}&cat_name={{item.cat_name}}'>
+          <image src='{{item.cat_icon}}'></image><text class='onShow'>{{item.cat_name}}</text>
+        </navigator>
+      </block>
+    </view>
+  </view>
+
+  <!-- 热搜标签 -->
+  <view class='padding'>
+    热搜标签
+    <view class='hot_tag margin_top'>
+      <block wx:for="{{getTag}}" wx:key="key">
+        <view bindtap='hoSsearch' data-tag_name='{{item.tag_name}}' class='bg_white border_radius margin_right'>
+        <text>{{item.tag_name}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+
+  <!-- 搜索历史记录 -->
+  <view class='padding_l_r'>
+    历史记录
+    <view class='hot_tag margin_top'>
+      <block wx:for="{{searchArr}}" wx:key="key">
+          <view  class='bg_white border_radius margin_right position_relative'>
+            <text bindtap='historyR' data-history_name='{{item}}'>{{item}}</text>
+            <image class='delete position_absolute' src='../../images/delete.png' data-hist_name='{{item}}' bindtap='del'></image>
+          </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+
+<view hidden='{{homepage}}' class='position_relative' style='top:90rpx;'>
+  <!-- 轮播 -->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color='{{indicatorColor}}' indicator-active-color='{{activeColor}}' class='index_banner'>
+    <block wx:for="{{getSlide}}" wx:key="key">
+      <swiper-item>
+        <image src="{{item.image}}" class='w100 h100' />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class='bg_white padding flex_space_bet color_gray index_classify onHide'>
+    <navigator hover-class='none' class='flex_center flex_column font_size26' url=''>
+      <image src='/images/lottery_draw.png'></image>积分抽奖
+    </navigator>
+    <view hover-class='none' class='flex_center flex_column font_size26' bindtap='go_shop'>
+      <image src='/images/mall.png'></image>积分商城
+    </view>
+    <navigator hover-class='none' class='flex_center flex_column font_size26' url='../task/mytasklist'>
+      <image src='/images/popularize.png'></image>我的推广
+    </navigator>
+    <view bindtap='sign' class='flex_center flex_column font_size26'>
+      <image src='/images/sign_in.png'></image>签到赚钱
+    </view>
+  </view>
+
+  <view class='bg_white'>
+    <!-- 美差事 -->
+    <view class='plum flex_center'>
+      <image src='../../images/left_horizontal.png' class='margin_l_r'></image>
+      今日美差事 
+      <image src='../../images/right_horizontal.png' class='margin_l_r'></image>
+    </view>
+    <block wx:for="{{cushyJob}}" wx:key="key">
+      <view class='list w95 flex_space_bet '>
+        <label class='task_icon onShow'>
+          <image src='{{item.cat_icon}}' class='public_img'></image>
+        </label>
+        <label class='w85'>
+          <view class='flex_space_bet'>
+            <text class='ellipsis1' style='width:70%;margin-top:-8rpx;'>{{item.task_name}}</text>
+            <!-- <navigator wx:if="{{item.maxjoin_man - item.man > 0}}" class="yellow_orange btn_square {{item.bgColor}} text_center" url='fetchtask?id={{item.task_id}}'>做任务</navigator> -->
+            <view bindtap='do_tasks' data-task_id = '{{item.task_id}}' wx:if="{{item.maxjoin_man - item.man > 0}}" class="yellow_orange btn_square {{item.bgColor}} text_center">做任务</view>
+
+            <view wx:if="{{item.maxjoin_man - item.man <= 0}}"  class="btn_square bg_silver {{item.bgColor}} text_center">已被抢完</view>
+            <!-- 任务已抢光：bg_silver 
+              做任务：yellow_orange -->
+          </view>
+          <view class='flex_space_bet'>
+            <label class='has_brought'><image src='../../images/hot.png' class='hot margin_right'></image>{{item.man}}人已领<text class='margin_left'>剩余{{item.maxjoin_man - item.man}}个</text></label>
+            <text wx:if="{{item.maxjoin_man - item.man > 0}}" class="money_reward">{{item.task_money}}元/个</text>
+            <text wx:if="{{item.maxjoin_man == item.man}}" class="money_reward1">{{item.task_money}}元/个</text>
+            <!-- 橘色赏金字体 
+                灰色赏金字体 money_reward1 -->
+          </view>
+        </label>
+      </view>
+    </block>
+  </view>
+
+  
+
+  <!-- 筛选条件 -->
+  <view class='margin_top bg_white'>
+    <!-- 任务导航 -->
+    <view class='screening flex_space_bet'>
+      <block wx:for="{{filterArr}}" wx:key="key">
+        <text class="text_center {{index == id ? 'font_bold' : ''}}" data-id='{{index}}' bindtap='termFilter'>{{item}}</text>
+      </block>
+    </view>
+
+    <!-- 任务列表 -->
+    <block wx:for="{{taskList}}" wx:key="key">
+      <view class='list w95 flex_space_bet '>
+        <label class='task_icon onShow'>
+          <image src='{{item.cat_icon}}' class='public_img'></image>
+        </label>
+        <label class='w85'>
+          <view class='flex_space_bet'>
+            <text class='ellipsis1' style='width:70%;margin-top:-8rpx;'>{{item.task_name}}</text>
+
+            <view bindtap='do_tasks' data-task_id = '{{item.task_id}}' wx:if="{{item.maxjoin_man - item.man > 0}}" class="yellow_orange btn_square {{item.bgColor}} text_center">做任务</view>
+
+            <view wx:if="{{item.maxjoin_man - item.man <= 0}}"  class="btn_square bg_silver {{item.bgColor}} text_center">已被抢完</view>
+            <!-- 任务已抢光：bg_silver 
+              做任务：yellow_orange -->
+          </view>
+          <view class='flex_space_bet'>
+            <label class='has_brought'><image src='../../images/hot.png' class='hot margin_right'></image>{{item.man}}人已领<text class='margin_left'>剩余{{item.maxjoin_man - item.man}}个</text></label>
+            <text wx:if="{{item.maxjoin_man - item.man > 0}}" class="money_reward">{{item.task_money}}元/个</text>
+            <text wx:if="{{item.maxjoin_man == item.man}}" class="money_reward1">{{item.task_money}}元/个</text>
+            <!-- 橘色赏金字体 
+                灰色赏金字体 money_reward1 -->
+          </view>
+        </label>
+      </view>
+    </block>
+  </view>
+
+  <view wx:if="{{taskList.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+    <image src='/images/notice.png' class='notice'></image>
+    暂无内容
+  </view>
+
+  <!-- 加载更多 -->
+  <image src='../../images/loading.gif' class='loading' style='display:{{loadMore}}'></image>
+</view>

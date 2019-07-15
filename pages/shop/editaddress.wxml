@@ -1,0 +1,46 @@
+<input class='onHide' value='{{province_id}}'></input><!-- 省 -->
+<input class='onHide' value='{{city_id}}'></input><!-- 市 -->
+<input class='onHide' value='{{street_id}}'></input><!-- 区 -->
+
+<view class='cover position_fixed w100' style='display:{{region_cover}}'></view>
+<view class='bg_white position_fixed region_box w100' style='display:{{region_cover}}'>
+  <view class='position_absolute w100' style='top:0rpx;'>
+    <view class='flex_end tit_box'>
+      <text class='tit font_size26'>选择国家地区</text> 
+      <image src='/images/close.png' bindtap='close_region' class='close margin_right'></image>
+    </view>
+
+    <text class='onShow color_silver padding'>已选择</text>
+    <view class="flex_start_center bg_999 selected">
+      <text bindtap='region_parent' data-parent_id='1' class='ellipsis1 h100 text_center {{province == "请选择" ? "color_silver": ""}}'>{{province}}</text>
+      <text bindtap='region_parent' data-parent_id='2' class='ellipsis1 h100 text_center {{city == "请选择" ? "color_silver": ""}}'>{{city}}</text>
+      <text bindtap='region_parent' data-parent_id='3' class='ellipsis1 h100 text_center {{street == "请选择" ? "color_silver": ""}}'>{{street}}</text>
+    </view>
+  </view>
+
+
+  <!-- 地区展示 -->
+  <view class='scroll_area'>
+    <text class='onShow color_silver font_size26 padding'>{{cur_choice}}</text>
+    <block wx:for="{{region}}" wx:key="key" wx:for-index="key">
+      <view bindtap='choose_area' data-region_type='{{item.region_type}}' class="flex_space_bet area {{index == key ? 'bg_999': ''}}" data-index='{{key}}' data-region_id='{{item.region_id}}' data-region_name='{{item.region_name}}'>{{item.region_name}}
+        <image src='/images/tick.png' data-index='{{key}}' wx:if="{{index == key}}" class='tick'></image>
+      </view>
+    </block>
+  </view>
+</view>
+
+<view class="bg_white">
+  <input placeholder='收货人' bindinput='receiver' value='{{contact}}' class='padding border_btm font_size30'></input>
+  <input placeholder='手机号码' bindinput='tel' value='{{mobile}}' type="number" class='padding border_btm font_size30'></input>
+
+  <view class='flex_space_bet padding border_btm' bindtap='select_region'>
+    <input placeholder='所在地区' bindinput='tel' value='{{full_address}}' class='w100 font_size30'></input>
+    <image src='/images/right_arrow.png' class='right_arrow'></image>
+  </view>
+  <textarea bindinput='detail_addr' placeholder='详细地址：如街道、门牌号、小区、楼栋号、单元室' class='w100 padding font_size30' style='height:140rpx;' value='{{address}}'></textarea>
+</view>
+
+
+<view class='padding fail bg_white margin_top' bindtap='del_addr'>删除地址</view>
+<view class='btn_circle w70 yellow text_center margin_top_pub' bindtap='conserve'>保存</view> 

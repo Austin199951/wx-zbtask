@@ -1,0 +1,11 @@
+page{background:#efefef;}
+.invite_banner{height:370rpx;}
+.index_classify navigator{width:30%;}
+
+.paper_box{margin:40rpx 0;}
+.paper_box .packet{width:94rpx;height:136rpx;margin-bottom:10rpx;}
+.paper_box .transverse_line{height:5rpx;width:10%;}
+.line{border-bottom:1px solid #efefef; width:35%;}
+
+.ranking{height:300rpx;}
+.ranking .ranking_list{height:50rpx;background:#efefef; }

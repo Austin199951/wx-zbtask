@@ -1,0 +1,85 @@
+<!--pages/login/login.wxml-->
+<view class='container'>
+  <view class='register flex_end'>
+    <!-- <text  bindtap='go_homepage' class='font_size28 color_blue'>先去首页看看</text> -->
+    <navigator hover-class='none' url='register'>注册</navigator>
+  </view> 
+  <view class='login_title'>
+    登录
+  </view>
+  <view class='flex_center'>
+    <!-- <view class="tab_btn text_center {{index == 0 ? 'tab_btn_cur' : ''}}" data-index="0" bindtap='showlogin'>手机快速注册</view> -->
+    <view class="tab_btn text_center tab_btn_cur" data-index="1">账号密码登录</view>
+  </view>
+
+  <!-- 手机快速注册 -->
+  <view class='quick_register' hidden="{{index==0}}">
+    <view class='list w90 flex_space_bet'>
+      <view class='flex_start_center'>
+        <image src='../../images/note.png' mode='aspectFit' class='icon' ></image>  
+        <input placeholder='请输入手机号' type='number'></input>
+      </view>
+      <view class='btn_square get_code text_center' bindtap='getCode'>{{getcode}}</view>
+    </view>
+    <view class='list w90 flex_space_bet'>
+        <image src='../../images/note.png' class='icon' mode='aspectFit'></image> 
+        <input placeholder='请输入短信验证码' type='number' class='w90'></input>
+    </view>
+    <view class="tips w90 flex_start_center">
+      <view class='radio {{check==true?"check":""}}' bindtap='toggleCheck'></view> 登录或者注册代表您已同意
+      <view bindtap='popservice'>《众帮服务协议》</view> 
+    </view> 
+    <view class='btn_circle w90 blue text_center color_white login_btn' bindtap='login2'>登录</view>     
+  </view> 
+  <!-- 手机快速注册end-->
+
+  <!-- 账号密码登录 -->
+  <view class='quick_register' hidden="{{index==1}}">
+    <view class='pub_list flex_center padding_l_r'>
+      <view class='flex_start w100'>
+        <image src='../../images/note.png' mode='aspectFit' class='icon' ></image>  
+        <input placeholder='请输入手机号' type='number' style='width:90%;' bindinput='mobile' value='{{mobile}}'></input>   
+        </view>
+    </view>
+    <view class='pub_list flex_space_bet padding_l_r'>
+      <view class='flex_start'>
+        <image src='../../images/password.png' class='pw_icon' mode='aspectFit'></image> 
+        <input placeholder='请输入登录密码' type='password' bindinput='password' value='{{pw}}'></input>
+      </view>
+      <navigator hover-class='none' url='forgetpassword' class='btn_square get_code text_center'>忘记密码</navigator> 
+    </view>
+    <view class="tips padding_l_r flex_start_center">
+      <!-- <view class='radio {{check==true?"check":""}}' bindtap='toggleCheck'></view>  -->
+      登录即表明您同意
+      <view  class='color_blue'>《推手条款》</view> 
+      <!-- bindtap='popservice' -->
+    </view> 
+  </view>
+  <view class='btn_circle 100 yellow text_center login_btn' bindtap='login'>登录</view> 
+
+
+  <!-- 账号密码登录end -->
+  <view class='thirdlogin flex_center'>
+    <view class=' flex_space_bet w90'>
+      <view class='line'></view>一键登录<view class='line'></view>
+    </view>
+    <view class='wxlogin text_center' bindtap='wx_login'>
+      <image src='../../images/wechat_icon.png' mode='aspectFit'class="login_icon"></image>
+      微信
+    </view>
+  </view>
+</view> 
+
+
+<!-- 服务协议弹窗  -->
+<view class='serviceAgreement flex_center' hidden='{{service == false}}'>
+  <view class='service_wrap bg_white'>
+    <view class='service_title text_center'>众帮服务协议</view>
+    <scroll-view scroll-y="ture" class='service_content padding'>
+      众帮服务协议巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉巴拉拉巴拉巴拉
+    </scroll-view>
+    <view class='btn_circle w70 text_center yellow' bindtap="closeService">
+      已知悉
+    </view>
+  </view>
+</view>

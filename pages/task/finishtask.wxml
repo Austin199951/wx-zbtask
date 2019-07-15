@@ -1,0 +1,47 @@
+<!-- 图片凭证 -->
+<view class='bg_white padding border_radius1 w90 margin_top'>
+  <text>请上传完成推广的图片凭证</text>
+  <view class='text_center flex_start_center add_picture margin_top' style='align-items: flex-start;'>
+      <!-- 添加图片 -->
+      <label  bindtap='add_images' class='onShow'>
+        <image src='../../images/camera.png' class='public_img'></image>
+      </label>
+
+      <!-- 上传过后图片展示 -->
+      <block wx:for="{{picture}}" wx:key="key">
+        <label class='onShow position_relative'>
+          <image src='{{item.v_img}}' bindtap='previewImage' data-src="{{item.v_img}}" class='public_img'></image>
+          <image src='../../images/cancel.png' class="position_absolute del" data-voucher_id='{{item.voucher_id}}' bindtap='del'></image>
+        </label>
+      </block>
+
+    </view>
+</view>
+
+
+<!-- 凭证的描述 -->
+<view class='bg_white padding border_radius1 w90 margin_top'>
+  <view class='voucher_desc'>
+    <text>请输入凭证的描述</text>
+    <textarea class='bg_silver padding margin_top border_radius1' bindinput='voucherDesc' value='{{desc}}'></textarea>
+  </view>
+</view>
+
+<view class='btn_circle yellow w50 text_center' style='margin:130rpx auto 80rpx;' bindtap='confirm'>确定</view>
+
+
+<!-- 上传凭证记录 -->
+<view class='w90'>
+  <text>上传凭证记录</text>
+    <view class='text_center flex_start_center add_picture margin_top record'>
+      <block wx:for="{{voucher_info}}" wx:key="key">
+        <label class='onShow position_relative margin_top' wx:if="{{item.content == ''}}">
+          <image src='{{item.v_img}}' class='public_img'></image>
+        </label>
+      </block>
+    </view>
+
+  <block wx:for="{{voucher_info}}" wx:key="key">
+    <text class='onShow color_silver'>{{item.content}}</text>
+  </block>
+</view>

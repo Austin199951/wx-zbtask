@@ -1,0 +1,7 @@
+<text class='padding onShow'>客服</text>
+<view class='bg_white flex_space_bet padding list'>QQ客服1 <text>2267866538</text></view>
+<view class='bg_white flex_space_bet padding list'>QQ客服2 <text>2106646625</text></view>
+
+<button open-type='contact' class='padding  list flex_space_bet online_customer margin_top'>
+  在线客服 <image src='../../images/right_arrow.png' class='right_arrow'></image>
+</button>

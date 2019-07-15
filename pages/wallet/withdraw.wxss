@@ -1,0 +1,17 @@
+page{background:#efefef;}
+.standby{color:#666;font-size:26rpx; letter-spacing:1rpx;}
+.standby text{color:#111;font-size:30rpx;margin-bottom:20rpx;}
+.alipay_wx{width:44rpx;height:44rpx;}
+.color_gray{font-size:24rpx;line-height: 40rpx;}
+.bank_icon{width:40rpx;height:40rpx;}
+.onfirm_withdraw{margin-top:50rpx;}
+.right_arrow{margin-top:7rpx;}
+.debit_card{font-size:28rpx;background:#f8f6f6;}
+.cash_money{font-size:50rpx; border-bottom:#efefef 1px solid;}
+.cash_money input{font-size:50rpx;}
+.balance{font-size:26rpx;}
+.balance text{color:#5a5a5a;}
+.choose_bank{font-size:30rpx;}
+.choose_bank .bank_icon{zoom:120%;}
+.choose_box{z-index: 2;bottom:20rpx;}
+.debit_card .list{border-bottom:1px solid #e0e0e0;}

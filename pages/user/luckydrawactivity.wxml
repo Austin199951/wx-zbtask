@@ -1,0 +1,17 @@
+<image src="/images/activity_bg.png" class="position_absolute w100 h100"></image>
+<view class="text_center color_white position_absolute w100 integral">
+  我的积分：19.00<text class="onShow">20积分/每次</text>
+</view>
+
+<!-- 转盘 -->
+<canvas canvas-id='bgCanvas' id='canvas-bg' class='canvasII'></canvas>
+<view class='canvasI' style="{{isRotate?'transform:rotate('+isRotate+'deg)':''}};">
+  <canvas canvas-id='canvasI' id="canvas-one" class='canvasI' ></canvas>
+</view>
+<cover-image class='start' src="/images/hand.png" catchtap='start' />
+
+<!-- 按钮 -->
+<view class="flex_space_bet activity_btn position_fixed">
+  <view class="text_center pale_yellow w40 btn_circle1">活动说明</view>
+  <view class="text_center yellow w40 btn_circle1">我的奖品</view>
+</view>

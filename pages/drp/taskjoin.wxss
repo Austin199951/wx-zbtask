@@ -1,0 +1,14 @@
+page{background: #efefef;}
+.taskjoin_msg{padding:20rpx 20rpx 20rpx 0;}
+.check_all{width:20%;height:90rpx;line-height:90rpx;}
+.speediness image{width:27rpx;height:43rpx;}
+.speediness{font-size:24rpx;color:#666;}
+.batch_operation{height:55rpx;line-height: 55rpx; width:25%;letter-spacing: 0rpx;}
+.select_box{zoom:80%;transition: all 0.3s;width:40rpx;height:40rpx;}
+.quick_review{top:0rpx;border-bottom:1px solid #efefef; z-index:2;}
+
+/* 快速审核 */
+.voucher image.margin_right{width:40rpx;height:40rpx;}
+.voucher view{height:80rpx;line-height: 80rpx;}
+.explanation text{background:#ccc;margin-bottom:10rpx;}
+.check_box{width:10%;height:200rpx;}

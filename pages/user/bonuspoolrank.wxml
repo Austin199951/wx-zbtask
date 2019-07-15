@@ -1,0 +1,26 @@
+<view class="text_center the_charts">
+  财富值排 <text class='fail'>TOP30</text> 榜
+</view>
+
+<view class='margin_top_pub w90 margin_btm'>
+  <view class='flex_space_bet color_silver pub_list'>
+    <text>名次</text>
+    <text>姓名</text>
+    <text>财富值</text>
+  </view>
+
+  <view class='flex_space_bet pub_list padding_t_b'>
+    <image src='/images/bronze_medal.png' class='gold_medal'></image>
+    <text class='ellipsis1 w50'>神勇铁金刚神勇铁金刚神勇铁金刚神勇铁金刚神勇铁金刚</text>
+    <text>347.61元</text>
+  </view>
+  <view class='flex_space_bet pub_list padding_t_b'>
+    <image src='/images/bronze_medal.png' class='gold_medal'></image>
+    <text class='ellipsis1 w50'>神勇铁金刚神勇铁金刚神勇铁金刚神勇铁金刚神勇铁金刚</text>
+    <text>347.61元</text>
+  </view>
+</view>
+
+<view class='position_fixed w100 edittask_btn text_center'>
+  您暂时未有财富积累，加油
+</view>

@@ -1,0 +1,88 @@
+<!-- 我的积分 -->
+<view class='integral'>
+  <image src='/images/sign_bg.png' class='w100 position_absolute'></image>
+  <text class='text_center position_absolute onShow w100 font_size34'>32.00</text>
+</view>
+
+
+<!-- 积分分类 -->
+<view class='bg_white padding flex_space_bet color_gray margin_top border_btm index_classify'>
+  <navigator hover-class='none' class='flex_center flex_column font_size26' url='pointdetail'>
+    <image src='/images/take_notes.png'></image>积分记录
+  </navigator>
+  <navigator hover-class='none' class='flex_center flex_column font_size26' url=''>
+    <image src='/images/draw_lottery.png'></image>积分抽奖
+  </navigator>
+  <view class='flex_center flex_column font_size26' bindtap='go_shop'>
+    <image src='/images/mall.png'></image>积分商城
+  </view>
+</view>
+
+
+<!-- 获取积分攻略： -->
+<view class='padding color_gray integral_strategy border_btm'>
+  <text>获取积分攻略：</text>
+  <view>1、每邀请小伙伴关注众帮推手公众号，可获取 <text class='fail'>5</text> 积分</view>
+  <view>2、每完成一个任务，即可获取 <text class='fail'>5</text> 积分</view>
+  <view>3、每天签到可获取 <text class='fail'>1~7</text> 积分</view>
+  <text class='margin_top onShow'>温馨提示：</text>
+  <view>新用户首次签到可获取  <text class='fail'>1</text> 元</view>
+  <text>积分可以用于抽奖和积分商城中购物抵现金</text>
+</view>
+
+
+<!-- 每日任务 -->
+<view class='padding'>
+  每日任务
+  <view class='margin_top padding_t_b flex_space_bet border_btm'>
+    <view>
+      <view class='font_size26 flex_start_center'>
+        分享活动<image src='/images/species.png' class='species'></image> 
+        <text class='fail reward'>+5</text>
+      </view>
+
+      <!-- 进度框 -->
+      <view class='flex_start_center margin_top'>
+        <view class='get_point margin_right overflow position_relative'>
+          <text class='point_percent position_absolute h100'></text>
+        </view>
+        <view class='font_size24'><text class='fail'>0</text> / 20</view>
+      </view>
+    </view>
+
+    <text class='border_pink1 btn_circle1 text_center w30'>分享活动</text>
+  </view>
+  <view class='padding_t_b flex_space_bet border_btm'>
+    <view>
+      <view class='font_size26 flex_start_center'>
+        分享活动<image src='/images/species.png' class='species'></image> 
+        <text class='fail reward'>+5</text>
+      </view>
+
+      <!-- 进度框 -->
+      <view class='flex_start_center margin_top'>
+        <view class='get_point margin_right overflow position_relative'>
+          <text class='point_percent position_absolute h100'></text>
+        </view>
+        <view class='font_size24'><text class='fail'>0</text> / 20</view>
+      </view>
+    </view>
+     <!--  -->
+    <text class='border_pink1 btn_circle1 text_center w30' bindtap='do_task'>做任务</text>
+  </view>
+
+  <view class='padding_t_b border_btm'>
+    <view class='font_size26 flex_start_center'>
+      分享活动<image src='/images/species.png' class='species'></image> 
+      <text class='fail reward'>+5</text>
+    </view>
+    
+    <!-- 进度框 -->
+    <view class='flex_start_center margin_top'>
+      <view class='get_point margin_right overflow position_relative'>
+        <text class='point_percent position_absolute h100'></text>
+      </view>
+      <view class='font_size24'><text class='fail'>0</text> / 20</view>
+    </view>
+  </view>
+</view>

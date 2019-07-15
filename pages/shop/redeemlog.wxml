@@ -1,0 +1,36 @@
+<!-- 退换列表 -->
+<block wx:for="{{redeem_log}}" wx:key="key"> 
+  <view class='border_btm padding flex_space_bet bg_white' data-order_id='{{item.order_id}}' bindtap='go_detail' data-is_pay='{{item.is_pay}}' data-is_cs='{{item.is_cs}}'>
+    <view class='exchange_img'><image src='{{item.snapshot.pic_url}}' class='w100 h100'></image></view>
+    <view class='record_info'>
+      <text class='ellipsis2 font_size32'>{{item.snapshot.name}}</text>
+      <text class='flex_space_bet fail'>{{item.point_pay}}积分+{{item.money_pay}}元</text>
+      <text class='color_silver font_size24 onShow'>{{item.add_time}}</text>
+    </view>
+
+    <view class='flex_space_bet redeemlog_btn color_silver' wx:if="{{item.is_finish == 1}}">
+      已完成<image src='/images/right_arrow.png' class='right_arrow margin_left'></image>
+    </view>
+
+    <view class='flex_space_bet redeemlog_btn color_blue' wx:if="{{item.is_refund == 1}}">
+      已退款<image src='/images/right_arrow.png' class='right_arrow margin_left'></image>
+    </view>
+
+    <view class='flex_space_bet redeemlog_btn color_blue' hover-class='none' wx:if="{{item.is_cs == 1}}">
+      售后中<image src='/images/right_arrow.png' class='right_arrow margin_left'></image>
+    </view>
+
+    <view wx:elif="{{item.is_pay == 1}}" class='flex_space_bet redeemlog_btn color_blue' hover-class='none'>
+      处理中<image src='/images/right_arrow.png' class='right_arrow margin_left'></image>
+    </view>
+
+    <view class='flex_space_bet redeemlog_btn color_blue' hover-class='none' wx:elif="{{item.is_pay == 0}}">
+      未支付<image src='/images/right_arrow.png' class='right_arrow margin_left'></image>
+    </view>
+  </view>
+</block>
+
+<view wx:if="{{redeem_log.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无退换记录
+</view>

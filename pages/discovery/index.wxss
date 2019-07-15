@@ -1,0 +1,6 @@
+page{background:#efefef;}
+.discovery_line{width:4rpx;height:38rpx;}
+.discovery_title{font-size:38rpx;}
+.activity{margin-bottom:15px;}
+.activity image{width:710rpx;height:274rpx;margin-top:15px;}
+.activity text{height:95rpx;line-height:95rpx;}

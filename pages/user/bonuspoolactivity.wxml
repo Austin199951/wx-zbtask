@@ -1,0 +1,62 @@
+<image src="/images/invite_banner.png" class="w100 invite_banner"></image>
+
+<view class='bg_white flex_space_bet color_gray padding'>
+  <view class='flex_column text_center w50'>已邀请人数（个）<text class='font_size36 fail'>0</text></view>
+  <view class='flex_column text_center w50 border_left'>
+    赚钱金额（个）<text class='font_size36 fail'>0</text>
+  </view>
+</view>
+
+<view class='bg_white padding margin_top'>
+  <view class='flex_space_bet'><text class='line'></text>实时领钱<text class='line'></text></view>
+  <view class='ranking overflow'>
+    <view animation="{{animationData}}">{{content}}</view>
+  </view>
+</view>
+
+<view class='bg_white padding flex_space_bet color_gray index_classify margin_top'>
+  <navigator hover-class='none' class='flex_center flex_column font_size26' url=''>
+    <image src='/images/share.png'></image>分享赚钱
+  </navigator>
+  <navigator hover-class='none' class='flex_center flex_column font_size26' url=''>
+    <image src='/images/rank.png'></image>排行榜
+  </navigator>
+  <navigator hover-class='none' class='flex_center flex_column font_size26' url='../task/mytasklist'>
+    <image src='/images/rule.png'></image>活动规则
+  </navigator>
+</view>
+
+<!-- 领取高额红包 -->
+<view class="bg_white margin_top padding">
+    <text class='font_size32'>领取高额红包</text>
+
+    <view class='paper_box flex_space_bet color_silver'>
+      <view class='flex_column text_center'>
+        <image src='/images/not_open_packet.png' class='packet'></image>88元
+      </view>
+      <!-- <image src='/images/transverse_line.png' class='transverse_line'></image> -->
+      <image src='/images/transverse_line_cur.png' class='transverse_line'></image>
+
+      <view class='flex_column text_center'>
+        <image src='/images/wait_packet.png' class='packet'></image>88元
+      </view>
+      <image src='/images/transverse_line.png' class='transverse_line'></image>
+
+      <view class='flex_column text_center'>
+        <image src='/images/been_opened.png' class='packet'></image>88元
+      </view>
+
+      <image src='/images/transverse_line.png' class='transverse_line'></image>
+      <view class='flex_column text_center'>
+        <image src='/images/not_open_packet.png' class='packet'></image>88元
+      </view>
+    </view>
+
+
+    <view class="reward_list color_gray">
+      <view>推荐人数达到100人，即可奖励 <text class="fail">88元</text></view>
+      <view>推荐人数达到300人，即可奖励 <text class="fail">298元</text></view>
+      <view>推荐人数达到1000人，即可奖励 <text class="fail">698元</text></view>
+      <view>推荐人数达到1600人，即可奖励 <text class="fail">998元</text></view>
+    </view>
+</view>

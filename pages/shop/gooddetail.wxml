@@ -1,0 +1,41 @@
+<view class='good_banner'>
+  <image src='{{good_detail.pic_url}}' class="w100 h100"></image>
+</view>
+
+<view class='padding border_btm bg_white'>
+  <text class='onShow font_size36 fail'>{{good_detail.point}}积分/{{good_detail.price}}元</text>
+  <text class='onShow margin_top'>{{good_detail.name}}</text>
+
+  <view class='margin_top color_silver font_size26 flex_space_bet'>
+    <view>原价：<text class='original_cost'>{{good_detail.ref_price}}元</text></view>
+    <text>已兑换 {{good_detail.redeem_count}} 笔</text>
+    <text>限量：{{good_detail.redeem_limit}}</text>
+  </view>
+</view>
+
+<view class='padding bg_white margin_top good_time'>
+  <view class='flex_start_center'>
+    <text class='color_silver'>开始时间：</text>
+    {{good_detail.start_time}}
+  </view>
+
+  <view class='flex_start_center'>
+    <text class='color_silver'>开始时间：</text>
+    {{good_detail.end_time}}
+  </view>
+</view>
+
+<import src="../../wxParse/wxParse.wxml"/>
+<view class='margin_btm bg_white margin_top padding'>
+  <text class='onShow' style='margin-bottom:20rpx;'>图片详情</text>
+  <template is="wxParse" data="{{wxParseData:desc.nodes}}"/>
+  <!-- <image src='/images/user_info.png' class='w100'></image>
+  <image src='/images/user_info.png' class='w100'></image> -->
+</view>
+
+<view class='flex_space_bet bg_white position_fixed w100 edittask_btn border_top'>
+  <text class='fail font_size36 padding_l_r'>{{good_detail.point}}积分+{{good_detail.price}}元</text>
+  <text class='onShow w30 onShow bg_silver text_center' wx:if="{{good_detail.redeem_count >= good_detail.redeem_limit}}">已售空</text>
+  <navigator url='addorder?good_id={{good_id}}' wx:else hover-class='none' class='w30 onShow yellow text_center' style='border:none;'>
+  立即兑换</navigator>
+</view>

@@ -1,0 +1,17 @@
+.balance{background:#fafafa; padding:50rpx 0;}
+.balance_icon{width:48rpx;height:48rpx;}
+.money{font-size:45rpx; height:100rpx;}
+.money text{font-size:26rpx;}
+.bg_silver{background:#fafafa;}
+.overflow label{font-size:32rpx;}
+.no_income text{font-size:26rpx;}
+.no_income image{width:240rpx;height:240rpx; margin:83rpx auto;}
+.outincome_icon{margin-top:5rpx;}
+.revenue_list{font-size:24rpx;color:#373737;}
+.revenue_list label:first-child{font-size:28rpx;color:#111;margin-bottom:5rpx;}
+.revenue_list label:first-child text{font-size:26rpx;}
+.task_commission{width:30rpx;height:36rpx;}
+.task_bounty{width:34rpx;height:31rpx;}
+.recharge{width:32rpx;height:30rpx;}
+.return_task{width:30rpx;height:34rpx;}
+.right_arrow{margin-top:8rpx;}

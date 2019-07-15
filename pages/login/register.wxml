@@ -1,0 +1,54 @@
+<!-- 手机号 -->
+<view class='pub_list w90 flex_space_bet'>
+  <view class='flex_start_center w100'>
+    <image src='../../images/note.png' mode='aspectFit' class='icon' ></image>  
+    <input placeholder='请输入手机号' type='number' maxlength="11" bindinput='phone' value='{{mobile}}'></input>
+  </view>
+</view>
+
+<!-- 校验码 
+<view class='pub_list w90 flex_space_bet'>
+  <view class='flex_start_center'>
+    <image src='../../images/note.png' class='icon' mode='aspectFit'></image> 
+    <input placeholder='请输入右侧校验码' type='text' maxlength="11" bindinput='verifycode' value='{{verify}}'></input>
+  </view>
+  <image src='{{img_url}}' bindtap='get_img_url' class='img_code' bindload="img_log"></image>
+</view>-->
+
+<view class='pub_list w90 flex_space_bet'>
+  <view class='flex_start_center'>
+    <image src='../../images/message.png' class='icon' mode='aspectFit'></image> 
+    <input placeholder='请输入短信验证码' type='number' maxlength="6" bindinput='smscode' value='{{sms_code}}'></input>
+  </view>
+  <view class='btn_square get_code text_center' bindtap='getcode'>{{getCode}}</view>
+</view>
+
+<!-- 新密码 -->
+<view class='pub_list w90 flex_space_bet'>
+  <view class='flex_start_center w100'>
+    <image src='../../images/password.png' class='icon' mode='aspectFit'></image> 
+    <input placeholder='密码(6-23位字母、数字)' password='true' maxlength='23' bindinput='newpw' value='{{new_pw}}'></input>
+  </view>
+  <!-- <image wx:if='{{eye}}' src='../../images/eye.png' mode='aspectFit' class='icon' bindtap='eye'></image> 
+  <image wx:if='{{eye == false}}' src='../../images/close_eye.png' mode='aspectFit' class='icon' bindtap='eye'></image>  -->
+</view>
+
+<!-- 确认密码 -->
+<view class='pub_list w90 flex_space_bet'>
+  <view class='flex_start_center w90' style='margin:0px;'>
+    <image src='../../images/password.png' class='icon' mode='aspectFit'></image> 
+    <input placeholder='请输入确认密码' password='{{!eye}}' maxlength='23' bindinput='confirmpw' value='{{confirm_pw}}'></input>
+  </view>
+  <image wx:if='{{eye}}' src='../../images/eye.png' mode='aspectFit' class='icon' bindtap='eye'></image> 
+  <image wx:if='{{eye == false}}' src='../../images/close_eye.png' mode='aspectFit' class='icon' bindtap='eye'></image> 
+</view>
+
+<!-- 去登陆众帮 -->
+<view class='w90 onShow margin_top color_silver' bindtap='go_login'>
+  已有众帮账号，<text class='color_blue'>马上登录</text>
+</view>
+
+
+<!-- 注册按钮 -->
+<view class='btn_circle yellow w70 register_btn text_center' bindtap='register'>注册</view>
+<view class='color_silver w90 margin_top font_size26'>众帮严厉打击一人多账户，核查后将会面临封号处理。</view>

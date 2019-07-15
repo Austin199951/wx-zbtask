@@ -1,0 +1,174 @@
+/* 公用代码 */
+page{font-size:30rpx;}
+input{font-size: 28rpx;}
+.font_size32{font-size:32rpx;}
+.font_size24{font-size:24rpx;}
+.font_size34{font-size:34rpx;}
+.font_size36{font-size:36rpx;}
+.font_size30{font-size:30rpx;}
+.font_size28{font-size:28rpx;}
+.wrap_text{word-break:break-all;}
+.clear::after{display: block;content: "";clear: both;}
+.flex_start{display: flex;justify-content: flex-start;}
+.flex_start_center{display: flex;justify-content: flex-start;align-items:center;flex-flow: wrap;}
+.flex_center{display: flex;justify-content: center;align-items: center;}
+.flex_space_bet{display:flex;justify-content: space-between;align-items: center;}
+.flex_space_bet_wrap{display:flex;justify-content: space-between;align-items: center;flex-flow: wrap;}
+.flex_end{display: flex;justify-content: flex-end;align-items: center;flex-flow: wrap;}
+.flex_end_start{display: flex;justify-content: flex-end;align-items: flex-start;}
+.flex_column{display: flex;flex-flow:column;}
+.w100{width:100%;}
+.h100{height:100%;}
+.w95{width:95%;margin:0 auto;}
+.w90{width:90%;margin:0 auto;}
+.w85{width:85%;margin:0 auto;}
+.w80{width:80%;margin:0 auto;}
+.w75{width:75%;margin:0 auto;}
+.w70{width:70%;margin:0 auto;}
+.w60{width:60%;margin:0 auto;}
+.w50{width:50%;margin:0 auto;}
+.w40{width:40%;}
+.w30{width:30%;}
+.bg_white{background:white;}
+.bg_blue{background:#4b82ff;}
+.overflow{overflow: hidden;}
+.pub_list{height:100rpx;border-bottom:1px solid #efefef;}
+/* input - placeholder的颜色 */
+.placeholder_class{color:#787878;font-size:28rpx;}
+.margin_l_r{margin:0 20rpx;}
+input,textarea{background:none; outline:none;}
+.onHide{display: none;}
+.border_left{border-left:1px solid #e0e0e0;}
+.onShow{display: block;}
+.margin_right{margin-right:20rpx;}
+.public_img{width:100%;height:100%;}
+/* 超出一行显示点点点 */
+.scroll_box{overflow: scroll;height:850rpx;}
+.scroll_box::-webkit-scrollbar{display: none;}
+.ellipsis1{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;}
+/* 超出一行显示点点点 */
+.ellipsis2{overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.text_center{text-align: center;}
+.text_right{text-align: right;}
+.text_left{text-align: left;}
+.bg_gray{background:#b9b9b9;color:#5d5d5d;}
+.get_code {border:1rpx solid #ffd83d;color:#666;font-size:26rpx;}
+.unread{background:red;width:16rpx;height:16rpx;border-radius: 100%;}
+ 
+/* 列表list */
+.list{font-size: 26rpx;padding: 25rpx 0;border-bottom:1px solid #efefef;} 
+.color_blue{color:#1b55ab;}
+.color_white{color:white;}
+.border_radius{border-radius:15rpx;}
+.bg_green{background:#9cffaa;}
+.border_gray{border:1px solid #636363;}
+.border_silver{border:1px solid #e0e0e0;color:#b9b9b9;}
+.border_silver1{border:1px solid #e0e0e0;}
+.border_top{border-top:1px solid #efefef;}
+.border_btm{border-bottom:1px solid #efefef;}
+/* 小按钮-带有点圆角 */
+.btn_square{width:180rpx;height:60rpx;line-height:60rpx;border-radius:10rpx;}
+.btn_square1{height:68rpx;line-height:68rpx;border-radius: 10rpx;letter-spacing:5rpx;}
+/* 按钮颜色渐变--黄到橙色 */
+.yellow_orange{background:linear-gradient(to right,#ffdb32, #ffb032);color:white;}
+.pink{background:#ff7c35;}
+.color_pink{color:#ff7c35;}
+.btn_circle{height:68rpx;line-height:68rpx;border-radius: 30rpx; letter-spacing:5rpx;}
+.btn_circle1{height:60rpx;line-height:60rpx;border-radius: 40rpx;}
+.pale_yellow{background:#fff1ad;}
+.yellow{background:#ffdb32;}
+.bg_silver{background:#b9b9b9;}
+.bg_999{background:#f4f5f7;}
+.margin_left{margin-left:20rpx;}
+.padding{padding:25rpx;}
+.padding_l_r{padding:0 20rpx;}
+.padding_t_b{padding:20rpx 0;}
+.margin_top{margin-top:20rpx;}
+.font_size26{font-size:26rpx;}
+.font_bold{font-weight: bold;}
+.user_total{width:120rpx;height:120rpx;border-radius:100%;}
+.right_arrow{width:14rpx;height:25rpx;}
+.position_relative{position: relative;}
+.position_absolute{position: absolute;}
+.position_fixed{position: fixed;}
+.fail{color:#ff3542;}
+.succ{color:#11b015;}
+.margin_btm{margin-bottom:100rpx;}
+.go_back {width:18rpx;height:32rpx;}
+.red_dot{background:#ff3542;width:15rpx;height:15rpx;margin-left:10rpx;border-radius: 100%;}
+
+.fetchtask .money_reward{font-size:50rpx;right:15rpx;margin-top:10rpx;}
+.fetchtask .money_reward text{font-size:25rpx;}
+.img_code{width:260rpx;height:100%;}
+
+.loading{width:40rpx;height:40rpx;margin:20rpx auto;}
+.border_pink{border:#ff9250 1rpx solid;}
+.border_pink1 {border:1px solid #ff9250;color:#ff9250;}
+.task_icon {width:85rpx;height:85rpx; margin-right:15rpx;}
+.margin_top_pub{margin-top:120rpx;}
+.fetchtask{padding-bottom:20rpx;}
+/* 搜索框 */
+.search {height:88rpx;line-height:88rpx;background:#ffdb32;}
+.search_box {height:80%;border-radius:35rpx;width:75%;}
+.search .index_search{width:36rpx;height:36rpx;}
+.classify  navigator,.classify  view{width:25%;margin:20rpx 0;}
+.classify  navigator image,.classify  view image{width:85rpx;height: 85rpx;}
+.tasklist_title {height:80rpx;border-bottom:1px solid #efefef;z-index:2;}
+.tasklist_title text{height:100%;line-height: 80rpx;}
+.margi_t_b40{margin:40rpx auto;}
+
+.cover {width:100%;height:100%;background:rgba(0, 0, 0, 0.2);z-index:3;top:0px;}
+.cancel{width:60rpx;height:60rpx;left:50%;bottom:-80rpx;transform: translateX(-50%);}
+.cover_center {width:80%;transform: translate(-50%,-50%);left:50%;top:50%;z-index:4;}
+.expire_info{color:coral;}
+
+.money_reward{color:#fe9a38;}
+.money_reward1{color:#d0d0d0;}
+.contact_drp{height:45rpx;line-height:45rpx;border-radius: 0.2rem;border: solid 1px #ADADAD;color:#666;font-size:26rpx;width:100rpx;}
+.task_step{font-size:30rpx;color:#666;margin-top:20rpx;}
+.task_detail{font-size: 26rpx;color:#999; margin:15rpx 0 20rpx;}
+
+.issue{width:50rpx;height:50rpx;}
+
+/* 任务列表 */
+.attention {width:38rpx;height:28rpx;}
+.time_icon {width:35rpx;height:35rpx;}
+.duty {line-height: 60rpx;}
+.task_num {color:#b9b9b9;line-height:50rpx;font-size:28rpx;}
+.border_radius1 {border-radius:10rpx;}
+.finish_time {border:1px solid #efefef; line-height:50rpx;}
+.finish_time view{width:35%;height:100%;text-align: center;border-right:1px solid #efefef; padding:30rpx 0;}
+.finish_time view:last-child{border-right:none;}
+.edittask_btn {height:88rpx;line-height:88rpx;bottom:0rpx;}
+.edittask_btn label:first-child{border-right:1px solid white;}
+.long_string {width:10rpx;height:30rpx;}
+
+/* 添加图片 */
+.add_picture label{width:120rpx;height:120rpx;border-radius:10rpx;margin:10rpx 20rpx 20rpx 0;border:1px solid #efefef;}
+.add_picture .del{width:40rpx;height:40rpx;transform: translateX(-50%);top:-20rpx;right:-40rpx;}
+.task_con {font-size:26rpx;margin-top:20rpx;}
+.task_detail_tit {font-size:34rpx;width:80%;}
+.more_oper{bottom:20rpx;z-index: 4;}
+
+
+/* 推广详情 */
+.color_gray{color:#5a5a5a;}
+.color_silver{color:#999;}
+.refund_inst text{line-height:50rpx;}
+.tag text{border:1rpx solid #09cd9d;color:#09cd9d;padding:0 6rpx;border-radius:5rpx;margin-left:10rpx;}
+.tag .audit_fail{border:1rpx solid #fe3434;color:#fe3434;}
+.tag .underway{border:1rpx solid #ff7416;color:#ff7416;}
+.tasklist_title_cur{border-bottom:2px solid #ffdb32;}
+.task_time{border-top:1px solid #efefef;}
+.info_icon{width:60rpx;height:60rpx;}
+.withdraw_succ image{width:145rpx;height:145rpx; margin:100rpx 0 40rpx;}
+.withdraw_succ .pay_success{font-size:34rpx;}
+
+
+/* 分类 */
+.index_classify image{width:65rpx;height:65rpx;margin-bottom:10rpx;}
+.reward_list view,.reward_list text{line-height:60rpx; letter-spacing: 3rpx;}
+.exchange_img{width: 127rpx;height:127rpx;border:1px solid #efefef;border-radius:8rpx; overflow: hidden;}
+.record_info{width:79%;}
+.notice_info{margin-top:200rpx;}
+.notice{width:120rpx;height:130rpx;margin-bottom:30rpx;}

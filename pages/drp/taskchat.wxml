@@ -1,0 +1,27 @@
+<!-- 留言列表 -->
+<block wx:for="{{getChatUserInfo}}" wx:key="key">
+  <navigator hover-class='none' class='flex_start_center bg_white list' url='../task/chat?task_id={{task_id}}&&chat_user_id={{item.user_id}}'>
+    <label class='onShow user_total overflow margin_left'>
+      <image src='{{item.head_img_url}}' class='public_img'></image>
+    </label>
+    
+    <view class='w75 msglist'>
+      <label class='flex_space_bet'>
+        <text class='onShow msg_name font_size32' style='width:70%;'>{{item.username}}</text>
+        <!-- <text class='task_num font_size26'>2018-06-18</text> -->
+      </label>
+      
+
+      <text class='msg_con ellipsis1 font_size26' style='width:100%;'>{{item.chat_count}}条留言记录</text>
+    </view>
+  </navigator>
+</block>
+
+<view wx:if="{{getChatUserInfo.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无留言信息
+</view>
+
+
+<!-- 加载更多 -->
+<image src='../../images/loading.gif'  class='loading' style='display:{{loadMore}}'></image>

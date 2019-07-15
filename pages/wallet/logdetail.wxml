@@ -1,0 +1,21 @@
+<view class="flex_space_bet border_btm detail_tit padding_l_r">
+  <text class='succ' wx:if="{{detailList.status == '提现成功'}}">{{detailList.status}}</text>
+  <text class='fail' wx:if="{{detailList.status == '提现失败'}}">{{detailList.status}}</text>
+  <text wx:if="{{detailList.status == '提现中'}}">{{detailList.status}}</text>
+  {{detailList.money}} 元
+  <!--提现失败：fail
+      提现成功：succ，提现中不放 -->
+</view>
+
+<view class='padding margin_top detail_list'>
+  <view class='flex_space_bet'><text class='font_size26'>编号</text>{{detailList.log_id}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>描述</text>{{detailList.desc}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>申请时间</text>{{detailList.add_time}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>支付宝号</text>{{detailList.zfb_account}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>微信号</text>{{detailList.wx_account}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>支付时间</text>{{detailList.pay_time}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>到账金额</text>{{detailList.money_get}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>服务费</text>{{detailList.money_charge}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>支付渠道</text>{{detailList.channel}}</view>
+  <view class='flex_space_bet'><text class='font_size26'>备注信息</text>{{detailList.remark}}</view>
+</view>

@@ -1,0 +1,3 @@
+.the_charts{line-height:230rpx; font-size:40rpx;height:150rpx;}
+.gold_medal{width:55rpx;height:70rpx;}
+.edittask_btn{box-shadow: 1px 1px 8px #e0e0e0;}

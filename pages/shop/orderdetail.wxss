@@ -1,0 +1,14 @@
+page{background:#efefef;}
+.pub_list{height:88rpx;line-height:88rpx;}
+.order_msg{padding:10rpx 20rpx 20rpx;}
+
+/* 订单流水 */
+.order_flow_line .small_dot{width:15rpx;height:15rpx;border:2rpx solid #ffdb32; border-radius: 100%;}
+.order_flow_line .flow_line{border-left:1px solid #efefef;width:1rpx;margin-left:1rpx;padding-bottom: 9999px;margin-bottom: -9999px;}
+.order_flow_line{width:18rpx;float:left;}
+.order_flow{padding:0rpx;}
+.flow_info {float: left;position: relative;padding-bottom: 9999px;margin-bottom: -9999px;margin-left:30rpx;}
+.wrap_text{margin-bottom:30rpx;}
+.order_flow:last-child .flow_line{border:none;}
+.return_msg{height:140rpx;}
+.marked_words{margin-top:40rpx;}

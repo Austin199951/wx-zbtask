@@ -1,0 +1,38 @@
+.activity_btn{bottom:70rpx;width:80%;left:50%;transform: translateX(-50%);}
+.activity_btn .btn_circle1{height:80rpx;line-height: 80rpx;}
+.activity_btn .btn_circle1:first-child{background:#fff0c7;}
+.integral{top:300rpx;line-height:55rpx;}
+
+
+/* 转盘 */
+.canvasI{
+  width: 499rpx;
+  height:499rpx;
+  position: absolute;
+  left: 0;
+  top:115rpx;
+  right: 0;
+  bottom: 0;
+  margin: auto auto;
+  transition:all 3s ease;
+}
+.canvasII{
+  width:550rpx;
+  height:550rpx;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top:230rpx;
+  bottom: 0;
+  margin: auto auto;
+}
+.start{
+  position: absolute;
+  width: 100rpx;
+  height:140rpx;
+  top:15%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto auto;
+}

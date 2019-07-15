@@ -1,0 +1,11 @@
+page{background: #efefef}
+.chat_box .btn_circle{width:150rpx; height:65rpx;line-height: 65rpx;}
+.msg_time{background:#e0e0e0;border-radius: 20px;padding:5rpx 20rpx;}
+.pocket{padding:15rpx 20rpx;max-width: 70%; word-wrap:break-word;}
+.pocket_arr{border-bottom: 5px solid transparent;position: absolute;border-top: 5px solid transparent;content: "";top: 13px;}
+.pocket_user{right: -10px;border-left: 10px solid #fff1ad;} 
+.pocket_me{left: -10px;border-right: 10px solid white;}
+.pocket_merchant{left: -10px;border-right: 10px solid #4b82ff;}      
+.info_icon{width:80rpx;height:80rpx;}
+.edittask_btn{height:100rpx;line-height: 100rpx;}
+.chat_box input{border:1px solid #efefef;border-radius:20px; width:70%;height:70%;line-height: 80rpx;}

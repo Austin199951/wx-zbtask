@@ -1,0 +1,82 @@
+<!-- 遮幕 -->
+<!-- <view class='cover w100 position_fixed' style='top:171rpx;' style='display:{{display}}'></view>
+<view class='position_absolute w100 bg_white filter_cover' style='display:{{display}}'>
+  <block wx:for="{{filter}}" wx:key="key">
+    <view class='padding flex_space_bet' bindtap='filterPrer' data-filter_id='{{index}}'>{{item}}
+      <image class='filter_icon' src='{{index == filter_id ? "../../images/filter.png" : ""}}'></image>
+    </view>
+  </block>
+</view> -->
+
+
+<!-- 搜索框 -->
+<view class='search flex_space_bet position_fixed' style='z-index:2; padding:0 50rpx;top:0px;'>
+  <view class='search_box flex_start_center bg_white margin_right'>
+    <image src='../../images/index_search.png' class='margin_l_r index_search'></image>
+    <input placeholder='戳这里，任务搜一搜' placeholder-class='placeholder_class' class='w80' bindinput='searchInp' value='{{searchVal}}'></input>
+  </view>
+  <view class="sur_search text_center" bindtap='confirmSearch'>搜索</view>
+</view> 
+
+<!-- 导航 -->
+<view class='tasklist_title bg_white flex_space_bet padding_l_r w100 condition position_fixed' style='z-index:2;top:89rpx;'>
+    <view data-type_nav='views' bindtap='screen_nav' class="flex_center position_relative {{views == 1 ? 'screen_nav_cur' :''}}" >综合
+    </view>
+
+      <view data-type_nav='task_money' bindtap='screen_nav' class="flex_center position_relative {{task_money >= 0 ? 'screen_nav_cur' :''}}" >价格
+      <image src='{{task_money == 0 ? "../../images/btm_arrow_current.png" :(task_money == 1 ?"../../images/top_arrow_current.png" : "../../images/start_arrow.png")}}' class='filter_arrow'></image>
+    </view>
+
+    <view data-type_nav='start_time' bindtap='screen_nav' class="flex_center position_relative {{start_time >= 0 ? 'screen_nav_cur' :''}}">时间
+      <image src='{{start_time == 0 ? "../../images/btm_arrow_current.png" :(start_time == 1 ?"../../images/top_arrow_current.png" : "../../images/start_arrow.png")}}' class='filter_arrow'></image>
+    </view>
+
+    <view bindtap='classify' class="flex_center position_relative {{keyword == '' ? 'screen_nav_cur' :''}}">{{cat_name}}</view>
+</view>
+
+<!-- 热门服务 -->
+<view class='position_relative onHide{{classifyIcon ? "" : "onShow"}}' style='top:152rpx;'>
+  <view class='classify text_center flex_start_center bg_white margin_top'>
+    <block wx:for="{{getCatInfo}}" wx:key="key">
+      <view bindtap='selectTask' data-cat_name='{{item.cat_name}}' data-cat_id='{{item.cat_id}}'>
+        <image src='{{item.cat_icon}}'></image>
+        <text class="onShow {{catid == item.cat_id ? 'screen_nav_cur' :''}}' data-type_nav='keyword">{{item.cat_name}}</text>
+      </view>
+    </block>
+  </view>
+</view>
+ 
+<!-- 筛选条件--任务列表 -->
+<view class='position_relative onHide{{taskIcon ? "" : "onShow"}}' style='top:160rpx;'>
+  <view class='bg_white'>
+    <block wx:for="{{taskList}}" wx:key="key">
+        <view class='list w95 flex_space_bet '>
+          <label class='task_icon onShow'>
+            <image src='{{item.cat_icon}}' class='public_img'></image>
+          </label>
+          <label class='w85'>
+            <view class='flex_space_bet'>
+              <text class='ellipsis1' style='width:70%'>{{item.task_name}}</text>
+              <navigator hover-class='none' wx:if="{{item.maxjoin_man - item.man > 0}}" class="yellow_orange btn_square {{item.bgColor}} text_center" url='fetchtask?id={{item.task_id}}'>做任务</navigator>
+
+              <view wx:if="{{item.maxjoin_man - item.man <= 0}}"  class="btn_square bg_silver {{item.bgColor}} text_center">已被抢完</view>
+              <!-- 任务已抢光：bg_silver 
+                做任务：yellow_orange -->
+            </view>
+            <view class='flex_space_bet'>
+              <label class='has_brought'><image src='../../images/hot.png' class='hot margin_right'></image>{{item.man}}人已领<text class='margin_left'>剩余{{item.maxjoin_man - item.man}}个</text></label>
+              <text wx:if="{{item.maxjoin_man - item.man > 0}}" class="money_reward">{{item.task_money}}元/个</text>
+              <text wx:if="{{item.maxjoin_man == item.man}}" class="money_reward1">{{item.task_money}}元/个</text>
+              <!-- 橘色赏金字体 
+                  灰色赏金字体 money_reward1 -->
+            </view>
+          </label>
+        </view>
+      </block>
+  </view>
+
+  <view wx:if="{{taskList.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+    <image src='/images/notice.png' class='notice'></image>
+    暂无内容
+  </view>
+</view>

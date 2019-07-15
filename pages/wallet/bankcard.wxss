@@ -1,0 +1,5 @@
+page{background: #efefef;}
+.bank_list{background:linear-gradient(to bottom,#B41B19,#C5514B);color:#F3F5F5;}
+.bank_icon{width: 40rpx;height:40rpx; margin-top:8rpx;}
+.default_card{margin-top:18rpx;}
+.bank_list text{font-size:26rpx;}

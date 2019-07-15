@@ -1,0 +1,239 @@
+<!-- 遮幕 -->
+<view class='cover position_fixed w100' style='display:{{display}}'></view>
+<!-- 提交提示 -->
+<view class="cover_center position_fixed bg_white w85 border_radius1 step_box onHide{{remind ? 'onShow': ''}}">
+  <text class='text_center onShow padding font_size32'>提交提醒</text>
+
+  <view class='padding'>
+    1、任务总费用为 <text class='color_pink'>{{need_pay}}</text>元，提交后将进入支付界面。
+  </view>
+  <view class='padding'>2、若用户提交凭证后不处理，<text class='color_pink'>{{verify_time}}</text>小时后系统自动通过并发放费用，请及时审核。</view>
+  <view class='padding'>3、任务退款需在<text class='color_pink'>{{task_refund}}</text>后才能发起申请。</view>
+
+  <view class='w70 flex_space_bet margi_t_b40'>
+      <label class='btn_square text_center onShow border_pink color_gray' bindtap='close'>取消</label>
+      <label class='btn_square text_center onShow border_pink color_pink' bindtap='submit'>确定</label>
+    </view>
+</view>
+
+
+<!-- 步骤一 -->
+<view style='display:{{step1}}'>
+  <!-- 文字修改 -->
+  <view class="cover_center position_fixed bg_white w85 border_radius1 step_box onHide{{character ? 'onShow': ''}}">
+
+    <input class='padding_l_r' value='{{step_name}}' placeholder-class='placeholder_class' placeholder='请输入标题，留空会默认填写【第{{step_no}}步】' bindinput='tasktit'></input>
+
+    <textarea class='padding onShow' style='width:90%;' value='{{content_one}}'  placeholder-class='placeholder_class' placeholder='请输入步骤介绍信息' bindinput='taskcont'></textarea>
+
+    <view class='w70 flex_space_bet margi_t_b40'>
+      <label class='btn_square text_center onShow border_pink color_gray' bindtap='close'>取消</label>
+      <label class='btn_square text_center onShow border_pink color_pink' data-step_type='{{step_type}}' bindtap='confirmEditStep' data-new_type='{{new_type}}'>确定</label>
+    </view>
+  </view>
+
+
+  <!-- 超链接添加 -->
+  <view class="cover_center position_fixed bg_white w85 border_radius1 step_box onHide{{hyperlink ? 'onShow': ''}}">
+    <input class='padding_l_r' value='{{step_name}}' placeholder-class='placeholder_class' placeholder='请输入标题，留空会默认填写【第{{step_no}}步】' bindinput='linkcaption'></input>
+    <input class='padding_l_r' value='{{content_one}}' placeholder-class='placeholder_class' placeholder='超链接标题' bindinput='hyperlink'></input>
+    <input class='padding_l_r' value='{{content_two}}' placeholder-class='placeholder_class' placeholder='超链接url：http://' bindinput='hyperlinkurl'></input>
+
+    <view class='padding color_pink'>
+      温馨提示：超链接请确保http://或者https://开头，避免用户访问报错
+    </view>
+
+    <view class='w70 flex_space_bet margi_t_b40'>
+      <label class='btn_square text_center onShow border_pink color_gray' bindtap='close'>取消</label>
+      <label class='btn_square text_center onShow border_pink color_pink' data-step_type='{{step_type}}' bindtap='confirmEditStep' data-new_type='{{new_type}}'>确定</label>
+    </view>
+  </view>
+
+  <!-- 图片添加 -->
+  <view class="cover_center position_fixed bg_white w85 border_radius1 step_box onHide{{addimg ? 'onShow': ''}}">
+    <input class='padding_l_r' value='{{step_name}}' placeholder-class='placeholder_class' placeholder='请输入标题，留空会默认填写【第{{step_no}}步】' bindinput='img_step_name'></input>
+    <text  class='padding_l_r onShow font_size26 margin_top color_silver'>可添加最多10张介绍图</text>
+    <view class='text_center flex_start_center add_picture padding_l_r margin_top' style='align-items: flex-start;'>
+      <!-- 添加图片按钮 -->
+      <label class='onShow' bindtap='upload_pictures'>
+        <image src='../../images/camera.png' class='public_img'></image>
+      </label>
+
+      <!-- 图片展示 -->
+      <block wx:for="{{picture}}" wx:key="key">
+        <label class='onShow position_relative'>
+          <image src='{{item.content1}}' class='public_img' data-task_id_x='{{task_id_x}}'></image>
+          <image src='../../images/cancel.png' data-step_id='{{step_id}}' class="position_absolute del" data-c_id='{{item.c_id}}' bindtap='del'></image>
+        </label>
+      </block>
+    </view>
+    
+    <view class='w70 flex_space_bet margi_t_b40'>
+      <label class='btn_square text_center onShow border_pink color_gray' bindtap='close'>取消</label>
+      <label class='btn_square text_center onShow border_pink color_pink' data-step_type='{{step_type}}' bindtap='confirmEditStep' data-new_type='{{new_type}}'>确定</label>
+    </view>
+  </view>
+
+  
+  <!-- 预览 -->
+  <view class="cover_center position_fixed bg_white w85 border_radius1 padding onHide{{preview ? 'onShow': ''}}">
+    <image src='../../images/cancel.png' class="cancel position_absolute" style='bottom:-8%' bindtap='cancel'></image>
+
+    <view  class='scroll_box'>
+      <block wx:for="{{preview_content}}" wx:key="key">
+        <text class='preview_tit'>{{item.step_name}}</text>
+        <view class='preview_con' wx:if="{{item.content_type == 1}}">
+            {{item.content.content1}}
+        </view>
+        <view class='preview_con' wx:if="{{item.content_type == 3}}">
+            {{item.content.content1}}
+        </view>
+
+        <text class='preview_tit'>{{preview_content.step_name}}</text>
+        <view  wx:if="{{item.content_type == 2}}" class='text_center flex_start_center add_picture preview_picture' style='align-items: flex-start;'>
+
+          <block wx:for="{{item.content}}" wx:key="key" wx:for-item="pre_item">
+            <label class='onShow position_relative' bindtap='preview_img' data-img='{{pre_item.content2}}'>
+              <image src='{{pre_item.content2}}' class='public_img'></image>
+            </label>
+          </block>
+        </view>
+      </block>
+
+    </view>
+  </view>
+
+    <text class='onShow font_size32 task_title padding_l_r'>任务标题：</text>
+    <view class='bg_white w95 border_radius1 margin_top'>
+      <input placeholder='请输入任务标题' class='task_tit padding_l_r' placeholder-class='placeholderClass' bindinput='task_caption' value='{{caption}}'></input>
+  </view>
+
+  <text class='onShow font_size32 task_title padding_l_r margin_top'>任务介绍：</text>
+  
+  <view class='w95 margin_top bg_white border_radius1'>
+    <block wx:for="{{getTaskSteps}}" wx:key="key" wx:for-index="key"> 
+      <view class='task_intro flex_space_bet' style='align-items:flex-start;'>
+        <text data-step_id='{{item.step_id}}' class='onShow step_name padding' data-content_type='{{item.content_type}}' bindtap='editTaskStep' data-key='{{key}}'>{{item.step_name}} </text>
+        <label class='margin_right margin_top'>
+          <image src='../../images/upward.png' bindtap='adjust' data-adjust_type='upward' data-key='{{key}}'></image>
+          <image src='../../images/down.png' bindtap='adjust' data-adjust_type='down' data-key='{{key}}'></image>
+          <image src='../../images/delete2.png' bindtap='delStep' data-step_id='{{item.step_id}}'></image>
+        </label>
+      </view>
+    </block>
+  </view>
+
+  <!-- 添加步骤 -->
+  <view class="add_step flex_center onHide{{showView ? 'onShow' : ''}}">
+    <block wx:for="{{step}}" wx:key="key">
+      <label class='text_center onShow {{item.step_top}}' data-step_type='{{item.step_type}}' bindtap='new_step'>
+        <image src='{{item.step_icon}}'></image>
+        <text class='onShow'>{{item.step_name}}</text>
+      </label>
+    </block>
+  </view>
+
+  <!-- 添加步骤按钮 -->
+  <label class='text_center onShow w50' style='margin:50rpx auto 120rpx;' bindtap='add_steps'>
+    <image src='../../images/address.png' class='address'></image><text class='onShow'>添加步骤</text>
+  </label>
+
+  <view class='flex_space_bet position_fixed w100 edittask_btn'>
+    <label class='w50 onShow pale_yellow text_center' bindtap='preview_click'>点击预览</label>
+    <label class='w50 onShow yellow text_center' bindtap='next'>下一步</label>
+  </view>
+</view>
+
+
+<!-- 步骤二 -->
+<view style='display:{{step2}}'>
+  <view bindcolumnchange="task_type" class='bg_white pub_list padding_l_r flex_space_bet list_demand'>
+    <text class='step_na'>选择任务类型</text>
+    <label class='flex_space_bet'>
+      <picker bindchange="task_type" value='{{task_type_id}}' range="{{getTaskType}}" range-key="{{'cat_name'}}">
+        {{getTaskType[task_type_id].cat_name}}
+        <input value='{{task_type_idx}}' class='onHide'></input>
+      </picker>
+      <image src='../../images/right_arrow.png' class='right_arrow margin_left'></image>
+    </label>
+  </view>
+
+  <!-- 任务开始时间 -->
+  <view class='bg_white pub_list padding_l_r flex_space_bet list_demand' bindcolumnchange='taskStartTime'>
+    <text class='step_na'>任务开始时间</text>
+    <label class='flex_space_bet'>
+        <picker mode="multiSelector" value="{{startDateTime}}" bindchange="taskStartTime" bindcolumnchange="taskStartTimeColumn" range="{{dateTimeArray}}">
+          {{dateTimeArray[0][startDateTime[0]]}}-{{dateTimeArray[1][startDateTime[1]]}}-{{dateTimeArray[2][startDateTime[2]]}} {{dateTimeArray[3][startDateTime[3]]}}:{{dateTimeArray[4][startDateTime[4]]}}
+          <input bindinput='start_time' value='{{startTime}}' class='onHide'></input>
+        </picker>
+        <image src='../../images/right_arrow.png' class='right_arrow margin_left'></image>
+    </label>
+  </view>
+
+  <view class='bg_white pub_list padding_l_r flex_space_bet list_demand' bindcolumnchange="taskEndTime">
+    <text class='step_na'>任务结束时间</text>
+    <label class='flex_space_bet'>
+       <picker mode="multiSelector" value="{{endDateTime}}" bindchange="taskEndTime" bindcolumnchange="taskEndTimeColumn" range="{{dateTimeArray}}">
+          {{dateTimeArray[0][endDateTime[0]]}}-{{dateTimeArray[1][endDateTime[1]]}}-{{dateTimeArray[2][endDateTime[2]]}} {{dateTimeArray[3][endDateTime[3]]}}:{{dateTimeArray[4][endDateTime[4]]}}
+          <input bindinput='end_time' value='{{endTime}}' class='onHide'></input>
+        </picker>
+        <image src='../../images/right_arrow.png' class='right_arrow margin_left'></image>
+    </label>
+  </view>
+
+  <view class='bg_white pub_list padding_l_r flex_space_bet list_demand'>
+    <text class='step_na'>任务限时</text>
+    <label class='flex_space_bet'>
+       <input class='border_radius margin_right w50 padding_l_r' bindinput='hour' value="{{astrict_time}}"></input>
+       <text class='onShow text_right'>小时</text> 
+    </label>
+  </view>
+
+  <view class='bg_white pub_list padding_l_r flex_space_bet list_demand'>
+    <view class='step_na'>
+      审核限时<text class='fail font_size26 margin_left'>超时自动审核</text> 
+    </view>
+    
+    <label class='flex_space_bet'>
+       <input class='border_radius margin_right w50 padding_l_r' bindinput='examinetime' value="{{examine_time}}"></input>
+       <text class='onShow text_right'>小时</text> 
+    </label>
+  </view>
+
+  <view class='bg_white pub_list padding_l_r flex_space_bet list_demand'>
+    <text class='step_na'>每人限接次数</text>
+    <label class='flex_space_bet'>
+       <input class='border_radius margin_right w50 padding_l_r' bindinput='astrictnum' value='{{astrict_num}}'></input>
+       <text class='onShow text_right'>次</text>
+    </label>
+  </view>
+
+  <view class='bg_white pub_list padding_l_r flex_space_bet list_demand'>
+    <text class='step_na'>任务数量</text>
+    <label class='flex_space_bet'>
+       <input class='border_radius margin_right w50 padding_l_r' bindinput='tasknum' value='{{task_num}}'></input>
+       <text class='onShow text_right'>个</text>
+    </label>
+  </view>
+
+  <view class='bg_white pub_list padding_l_r flex_space_bet list_demand'>
+    <text class='step_na'>每个任务赏金</text>
+    <label class='flex_space_bet'>
+       <input class='border_radius margin_right w50 padding_l_r' bindinput='taskreward' value='{{task_reward}}'></input>
+       <text class='onShow text_right'>个</text>
+    </label>
+  </view>
+
+  <view class='flex_end padding bg_white color_gray font_size26 text_right' style='display:{{reward}}'>
+    推荐者获得<text class='color_pink'>{{drp_money}}元</text>，任务完成者获得<text class='color_pink'>{{task_money}}元</text>
+  </view>
+  <view class='flex_end padding bg_white color_gray font_size26 text_right' style='display:{{minimum_reward}}'>
+    任务赏金最少为<text class='color_pink'>0.3元</text>
+  </view>
+
+  <!-- 任务操作按钮 -->
+  <view class='flex_space_bet position_fixed w100 edittask_btn'>
+    <label class='w50 onShow pale_yellow text_center' bindtap='prev'>上一步</label>
+    <label class='w50 onShow yellow text_center' bindtap='sure'>提交</label>
+  </view>
+</view>

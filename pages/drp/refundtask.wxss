@@ -1,0 +1,5 @@
+.refundtask input{min-width:80%;}
+.refund_inst label{margin-bottom:15rpx;}
+.refund_inst text{color:#666;font-size:26rpx;}
+.pay_info{line-height:45rpx;}
+.refundtask .refund_tit{width:150rpx;}

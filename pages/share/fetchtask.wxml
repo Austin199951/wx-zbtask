@@ -1,0 +1,94 @@
+<!-- 联系他 -->
+<view class='cover w100 position_fixed' style='display:{{display}}'></view>
+<view class='more_oper choose_box position_fixed w100 ' style='display:{{display}};'>
+  <view class='border_radius overflow w90'>
+    <block wx:for="{{taskDetail.drp_info.qq_array}}" wx:key="key">
+      <view bindtap='close' class='list choose_bank bg_white text_center'>{{item}}</view>
+    </block>
+    <block wx:for="{{taskDetail.drp_info.wx_array}}" wx:key="key">
+      <view bindtap='close' class='list choose_bank bg_white text_center'>{{item}}</view>
+    </block>
+    <navigator hover-class='none' class='list choose_bank bg_white text_center' url='../task/chat?id={{taskDetail.drp_info.drp_id}}' bindtap='close'>在线客服</navigator>
+  </view>
+  <view class='list w90 choose_bank margin_top bg_white text_center border_radius' bindtap='close'>取消</view>
+</view>
+
+<!-- 任务信息 -->
+<view class='w95 border_radius1 bg_white margin_top fetchtask position_relative'>
+  <view class='money_reward color_pink position_absolute'><text>￥</text>{{taskDetail.task_info.task_money}}</view>
+  <text class='onShow task_detail_tit padding'>{{taskDetail.task_info.task_name}}</text>
+  <label class='duty padding_l_r flex_space_bet'>
+    <view>
+      <image src='../../images/attention1.png' class='attention margin_right'></image>参与人数{{taskDetail.task_info.man}}
+    </view>
+    <text class='contact_drp text_center' bindtap='contact'>联系TA</text>
+  </label>
+  <label class='onShow duty padding_l_r'>
+    <image src='../../images/attention1.png' class='attention margin_right'></image>剩余参与人数
+    {{taskDetail.task_info.maxjoin_man - taskDetail.task_info.man}}
+  </label>
+  <label class='onShow duty padding_l_r'>
+    <image src='../../images/attention1.png' class='attention margin_right'></image>历史参与人数
+    {{taskDetail.task_info.history_injoin_man}}
+  </label>
+  <label class='onShow task_num padding_l_r'>
+    <image src='../../images/by_the_end_of_time.png' class='time_icon margin_right'></image>开始时间：
+    {{taskDetail.task_info.start_time}}
+  </label>
+  <label class='onShow task_num padding_l_r'>
+    <image src='../../images/by_the_end_of_time.png' class='time_icon margin_right'></image>结束时间：{{taskDetail.task_info.end_time}}
+  </label>
+
+  <!-- <view class='flex_space_bet finish_time margin_top text_center'>
+    <view><text class='onShow'>1天</text>平均完成时间</view>
+    <view><text class='onShow'>75%</text>任务验收率</view>
+    <view><text class='onShow'>24小时 </text>任务验收时间</view>
+  </view> -->
+</view>
+
+<text class='expire_info onShow w90 bg_white border_radius1 margin_top padding'>商家要求{{taskDetail.task_info.expire_hour}}小时内完成，过期将自动取消\n并承诺{{taskDetail.task_info.pass_time_desc}}完成审核
+</text>
+
+<!-- 任务说明 -->
+<view class='margin_top w90 bg_white border_radius1 padding margin_btm'>  
+  <label class='task_tit'>
+    <image src='../../images/long_string.png' class='long_string margin_right'></image>任务说明
+  </label>
+  <!-- 任务详情 -->
+
+  <view class='task_con'>
+    <block wx:for="{{taskDetail.task_info.task_content}}" wx:key="key">
+      <!-- 当任务类型等于1 -->
+      <block wx:if="{{item.content_type == 1}}">
+        <text class='onShow task_step'>{{item.step_name}}</text>
+        <text class='onShow task_detail'>{{item.content.content1}}</text>
+      </block>
+
+      <!-- 当任务类型等于3 -->
+      <block wx:if="{{item.content_type == 3}}">
+        <text class='onShow task_step' bindtap='copyurl' data-c_url='{{item.content.content2}}'>{{item.content.content1}}</text>
+        <text class='onShow task_detail wrap_text' bindtap='copyurl' data-c_url='{{item.content.content2}}'>{{item.content.content2}}</text>
+      </block>
+
+      <!-- 当任务类型等于2 -->
+      <block wx:if="{{item.content_type == 2}}">
+        <text class='onShow task_step'>{{item.step_name}}</text>
+
+        <!-- 加载详情图片 -->
+        <view class='text_center flex_start_center add_picture' style='align-items: flex-start;'>
+          <block wx:for="{{item.content}}" wx:key="key">
+            <label class='onShow position_relative'>
+              <image src='{{item.content2}}' data-img='{{item.content2}}' bindtap='previewImage' class='public_img'></image>
+            </label>
+          </block>
+        </view>
+
+      </block>
+    </block>
+
+  </view>
+</view>
+
+<view class='flex_space_bet position_fixed w100 edittask_btn'>
+  <label class='w100 onShow yellow text_center' style='border:none;' bindtap='takeTask'>接受推广</label>
+</view>

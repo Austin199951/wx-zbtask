@@ -1,0 +1,2 @@
+page{background: #efefef;}
+.edit{width:100rpx;height:60rpx;border-left:1px solid #efefef; line-height:60rpx;}

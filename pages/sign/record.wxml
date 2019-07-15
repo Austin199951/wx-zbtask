@@ -1,0 +1,14 @@
+<view class='list bg_white padding record_list margin_top position_relative'>
+  <image src='../../images/in_a_week.png' class='sign_label position_absolute'></image>
+  <!-- <image src='../../images/continuous_sign.png' class='sign_label position_absolute'></image> -->
+  <!-- 每周首签:in_a_week，
+    连续签到：continuous_sign -->
+
+  <label class='flex_space_bet'>
+    <view class='flex_start_center'><image src='../../images/sign1.png' class='sign margin_right'></image>签到奖励</view>
+    <text class='color_pink'>+0.5</text>
+  </label>
+  <label class='flex_start_center'>
+    <image src='../../images/sign_time.png' class='sign margin_right'></image>2018-05-20  12：52：33
+  </label>
+</view>

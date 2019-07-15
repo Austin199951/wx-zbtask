@@ -1,0 +1,35 @@
+<view class='tasklist_title bg_white flex_space_bet padding_l_r position_fixed w95'>
+  <text bindtap='tasklistBtn' class="text_center onShow {{status == 1 ? 'tasklist_title_cur' :''}}" data-status='1'>未完成推广</text>
+  <text bindtap='tasklistBtn' class="text_center onShow {{status == 3 ? 'tasklist_title_cur' :''}}" data-status='3'>审核中推广</text>
+  <text bindtap='tasklistBtn' class="text_center onShow {{status == 2 ? 'tasklist_title_cur' :''}}" data-status='2'>已完成推广</text>
+</view>
+
+<view style="padding-top:100rpx;">
+  <block wx:for="{{myTasks}}" wx:key="key">
+    <navigator hover-class='none' class='bg_white list padding' url='../task/taskinfo?id={{item.order_id}}'>
+
+      <label class='flex_space_bet'>
+        <label class='ellipsis1 task_name'>{{item.task_name}}</label>
+        <view class='tag'>
+          <text wx:if="{{status == 2}}">{{item.status_desc}}</text>
+          <text class='audit_fail' wx:if="{{status == 3}}">{{item.status_desc}}</text>
+          <text class='underway' wx:if="{{status == 1}}">{{item.status_desc}}</text>
+        </view>
+      </label>
+
+      <view class='task_num margin_top'>
+        参与人数{{item.man}},剩余参与人数{{item.maxjoin_man-item.man}} 
+        <text class='color_pink'>赏金{{item.task_money}}元</text>
+      </view>
+
+      
+    </navigator>
+  </block>
+</view>
+
+
+
+<view wx:if="{{myTasks.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无推广
+</view>

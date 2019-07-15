@@ -1,0 +1,30 @@
+<!-- 热门服务 -->
+<view class='bg_white'>
+  <!-- <label class='w95 discovery_title flex_start_center'>
+    <image src='../../images/discovery_line.png' class='discovery_line margin_right'></image>热门服务
+  </label> -->
+  <label class='discovery_title flex_start_center bg_white padding_l_r' style="padding-top:20rpx;">
+    <image src='../../images/discovery_line.png' class='discovery_line margin_right'></image>热门服务
+  </label>
+  <view class='classify text_center flex_start_center w95'>
+    <block wx:for="{{getCatInfo}}" wx:key="key">
+      <navigator hover-class='none' url='../share/searchresult?task_type={{item.cat_id}}'>
+        <image src='{{item.cat_icon}}'></image><text class='onShow'>{{item.cat_name}}</text>
+      </navigator>
+    </block>
+  </view> 
+</view>
+
+
+<!-- 精选活动 -->
+<label class='discovery_title flex_start_center bg_white margin_top padding_l_r' style="padding-top:20rpx;">
+  <image src='../../images/discovery_line.png' class='discovery_line margin_right'></image>精选活动
+</label>
+
+<!-- 加载轮播 -->
+<block wx:for="{{getSlide}}" wx:key="key">
+  <navigator hover-class='none' class='padding_l_r activity bg_white' url='{{item.link}}'>
+    <image src='{{item.image}}'></image>
+    <text class='onShow'>{{item.description}}</text>
+  </navigator>
+</block>

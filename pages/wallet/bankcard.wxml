@@ -1,0 +1,12 @@
+<view class='bank_list border_radius1 w90 padding margin_top flex_start'>
+  <image src='../../images/abc.png' class='bank_icon margin_right'></image>
+  <view class='w90'>
+    <label class='flex_space_bet'>中国农业银行<text bindtap='del'>删除</text></label>
+    <label class='flex_space_bet'>储蓄卡<text class='default_card'>默认卡</text></label>
+    <text>9559981455801000717</text>
+  </view>
+</view>
+
+<view class="position_fixed edittask_btn w100 text_center bg_silver">
+  <navigator hover-class='none' url='addcard'>+ 添加储蓄卡</navigator>
+</view>

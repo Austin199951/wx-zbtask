@@ -1,0 +1,17 @@
+<block wx:for="{{detail_list}}" wx:key="key">
+  <navigator hover-class='none' class='list padding flex_start_center' url='logdetail?log_id={{item.log_id}}'>
+    <image src='../../images/dollar.png' class='dollar margin_right'></image>
+    <label class='onShow withdraw_list'>
+      <view class="flex_space_bet">
+        <text class="ellipsis1 w80" style='margin:0rpx;'>{{item.desc}}</text> 
+        <text class='fail'>{{item.money}}元</text>
+      </view>
+      <view class="flex_space_bet">
+          时间：{{item.add_time}}
+          <!--<text class="flex_end flex_start_wrap">{{item.status}}</text>
+               审核失败：fail
+              审核通过、审核中：succ -->
+          </view>
+    </label>
+  </navigator>
+</block>

@@ -1,0 +1,5 @@
+<block wx:for="{{help_list}}" wx:key="key">
+  <navigator hover-class='none' url='helpdetail?id={{item.id}}' class="list flex_space_bet padding bg_white color_gray">
+    {{item.title}}<image src='../../images/right_arrow.png' class='right_arrow'></image>
+  </navigator> 
+</block>

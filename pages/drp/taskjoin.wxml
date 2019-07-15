@@ -1,0 +1,139 @@
+<!-- 凭证内容（快速审核） -->
+<view class='cover position_fixed w100' style='display:{{cover}}'></view>
+<view class='cover_center position_fixed w95 border_radius1 padding' style='display:{{voucher}}'>
+  <image src='../../images/cancel.png' class="cancel position_absolute" bindtap='cancel'></image>
+
+  <!-- 滑动区 -->
+  <view class='scroll_box w100 position_relative voucher bg_white border_radius1'>
+    <view class='flex_start_center w90'>
+      <image src='../../images/good_name.png' class='margin_right'></image>任务名称：{{voucher_content.task_info.task_name}}
+    </view>
+    <view class='flex_start_center w90'>
+      <image src='../../images/submitter.png' class='margin_right'></image>提交人：{{voucher_content.task_info.username}}
+    </view>
+    <view class='flex_start_center w90'>
+      <image src='../../images/voucher_detail_time.png' class='margin_right'></image>接单时间：{{voucher_content.order_info.add_time}}
+    </view>
+    <view class='flex_start_center w90'>
+      <image src='../../images/voucher_detail_time.png' class='margin_right'></image>审核时间：
+      <block wx:if="{{voucher_content.order_info.finish_time == 0}}">未提交</block>
+      <block wx:else>{{voucher_content.order_info.finish_time}}</block> 
+    </view>
+
+    <label class='explanation w90 onShow'>
+      <view class='flex_start_center'>
+        <image src='../../images/voucher.png' class='margin_right'></image>接单说明
+      </view>
+      <block wx:for="{{voucher_content.voucher_info}}" wx:key="key">
+        <text class='w90 border_radius1 onShow padding' wx:if="{{item.content != ''}}">{{item.content}}</text>
+      </block>
+    </label>
+    <view class='flex_start_center w90'>
+      <image src='../../images/voucher.png' class='margin_right'></image>接单人凭证
+    </view>
+
+    <label class='text_center flex_start_center add_picture padding_l_r margin_top' style='align-items: flex-start;'>     
+    
+      <!-- 图片展示 -->
+      <block wx:for="{{voucher_content.voucher_info}}" wx:key="key">
+        <label bindtap='preview_picture' data-v_img='{{item.v_img}}' class='onShow position_relative' wx:if="{{item.content == ''}}">
+          <image src='{{item.v_img}}' class='public_img'></image>
+        </label>
+      </block>
+    </label>
+
+    <view class='w80 flex_space_bet margi_t_b40' wx:if="{{voucher_content.order_info.status == 3 && voucher_content.order_info.is_delete == 0}}">
+      <label class='btn_square text_center onShow border_pink' bindtap='close' data-order_idx='{{order_idx}}'>审核不通过</label>
+      <label class='btn_square text_center onShow border_pink1' bindtap='confirm' data-order_idx='{{order_idx}}'>审核通过</label>
+    </view>
+  </view>
+</view>
+
+<view class='cover_center position_fixed w90 border_radius1 padding bg_white' style='display:{{regard}}'>
+  <view class='flex_start_center'>
+    <image src='../../images/issue.png' class='issue margin_right'></image>请输入驳回理由
+  </view>
+  <textarea placeholder='请输入驳回理由' bindinput='drp_note' value='{{account}}' class='bg_silver w90 padding margi_t_b40 border_radius1'></textarea>
+  <view class='w80 flex_space_bet margi_t_b40'>
+      <label class='btn_square text_center onShow border_pink' bindtap='call_off'>取消</label>
+      <label class='btn_square text_center onShow border_pink1' bindtap='sure'>确认</label>
+    </view>
+</view>
+
+<!-- 批量操作导航 -->
+<view class='quick_review flex_space_bet bg_white padding position_fixed w95'>
+  <label class='flex_space_bet speediness'>
+    <image src='../../images/speediness.png' class='margin_right'></image>快速审核
+  </label>
+  <text class="border_pink border_radius1 onShow text_center batch_operation" bindtap='batchOper'>批量操作</text>
+</view>
+
+<!-- 凭证列表 -->
+<view class='margin_btm margin_top_pub'>
+  <checkbox-group bindchange="change_checkbox">
+    <block wx:for="{{task_join_list}}" wx:key='key' wx:for-index="key">
+      <view class='margin_top bg_white flex_start_center'>
+
+        <!-- 选择按钮 -->
+        <block wx-if="{{!item.checked}}">
+          <view class="check_box flex_center onHide{{batchoper ? 'onShow' : ''}}" bindtap='check' data-id='{{key}}'>  
+            <image class="border_radius1 margin_left select_box" src="../../images/check1.png"></image>
+          </view>
+        </block>
+        <block wx-if="{{item.checked}}">
+          <view class="check_box flex_center onHide{{batchoper ? 'onShow' : ''}}" bindtap='check' data-id='{{key}}'>
+            <image class="border_radius1 margin_left select_box" src="../../images/check_current.png"></image>
+          </view>
+        </block>
+
+        <!-- <checkbox checked='{{checked}}' bindtap='change_checkbox' data-key='{{key}}' color='#ffdb32' class="margin_left select_box onHide{{batchoper ? 'onShow' : ''}}"></checkbox> -->
+
+        <!-- <label class='onShow user_total padding'>
+          <image src='{{item.userTotal}}' class='public_img'></image>
+        </label> -->
+        <view class='taskjoin_msg w85'>
+          <label class='flex_space_bet'>
+            <view class='flex_start_center' style='margin-bottom:10rpx;'>
+            提交人：
+            <text class='ellipsis1' style='width:400rpx;'>{{item.username}}</text>
+            </view>
+            <view class='tag'>
+              <text class='underway' wx:if="{{item.status == 1}}">未完成</text>
+              <text wx:elif="{{item.status == 2}}">已完成</text>
+              <text class='audit_fail' wx:else>审核中</text>
+
+              <!-- audit_fail：审核失败
+                    underway：审核中 -->
+            </view>
+          </label>
+          <text class='task_num onShow'>接单时间：{{item.add_time}}</text>
+          <text class='task_num onShow' wx:if="{{item.status == 2}}">审核时间：{{item.finish_time}}</text>
+          <text class='task_num onShow' wx:else>审核中</text>
+        </view>
+        <view class='flex_end w100 padding'  wx:if="{{item.status != 1}}" style='border-top:#efefef 1px solid;'>
+          <text data-order_id='{{item.order_id}}' bindtap='rapid_audit' class="btn_square border_pink text_center margin_right">快捷审核</text>
+          <!-- <text class="btn_square border_pink1 text_center">凭证详情</text> -->
+        </view>
+      </view>
+    </block>
+  </checkbox-group>
+</view>
+
+
+<!-- 暂无内容 -->
+<view wx:if="{{task_join_list.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无内容
+</view>
+
+<!-- 批量通过底部导航 -->
+<view class="flex_space_bet bg_white padding_l_r edittask_btn position_fixed w95 onHide{{batchoper ? 'onShow' : ''}}">
+
+  <text class='onShow check_all' wx:if="{{!select_a}}" bindtap='check_all'>全选</text>
+  <text class='onShow check_all' wx:if="{{select_a}}" bindtap='decheck_all'>全选</text>
+
+  <text class="btn_square border_gray text_center onShow" bindtap='batch_voucher'>批量通过</text>
+</view>
+
+<!-- 加载更多 -->
+<image src='../../images/loading.gif'  class='loading' style='display:{{loadMore}}'></image>

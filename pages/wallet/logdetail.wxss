@@ -1,0 +1,4 @@
+.detail_tit{height:150rpx;font-size:34rpx;}
+.detail_tit text{font-size:38rpx;}
+.detail_list{line-height:80rpx;}
+.detail_list text{color:#999;text-align-last: justify;width:20%;}

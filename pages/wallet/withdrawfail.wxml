@@ -1,0 +1,6 @@
+<view class='text_center withdraw_succ'>
+  <view class='pay_success'>
+    <image src='../../images/pay_fail.png'></image>
+    <view>提现失败</view>
+  </view>
+</view>

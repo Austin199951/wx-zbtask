@@ -1,0 +1,20 @@
+<view class='margin_btm'>
+  <block wx:for="{{add_list}}" wx:key="key">
+    <view class="bg_white border_btm padding flex_space_bet">
+      <view bindtap='address_select' data-add_id='{{item.add_id}}' style='width:88%;'>
+        {{item.contact}} <text class='margin_left color_silver font_size26'>{{item.mobile}}</text>
+        <text class='onShow' style='margin-top:8rpx;'>{{item.full_address}}</text>
+      </view>
+      <navigator url='editaddress?add_id={{item.add_id}}' hover-class='none' class='edit text_center color_silver margin_left font_size26'>编辑</navigator>
+    </view>
+  </block>
+</view>
+
+<view wx:if="{{add_list.length == 0}}" class='text_center color_silver notice_info flex_center flex_column'>
+  <image src='/images/notice.png' class='notice'></image>
+  暂无收货地址
+</view>
+
+<navigator hover-class='none' url='editaddress?add_id=-1' class='w100 position_fixed edittask_btn onShow yellow text_center' style='border:none;'>
+  添加新地址
+</navigator>

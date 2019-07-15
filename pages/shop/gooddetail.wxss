@@ -1,0 +1,4 @@
+page{background: #efefef;}
+.good_banner{height: 300rpx;}
+.original_cost{text-decoration: line-through;}
+.good_time view{line-height:50rpx;}
